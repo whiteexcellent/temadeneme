@@ -1,12 +1,12 @@
 const icons = [
   { name: 'phone', file: 'phone.svg', category: 'communication', tr: 'Telefon' },
   { name: 'messages', file: 'messages.svg', category: 'communication', tr: 'Mesajlar' },
-  { name: 'contacts', file: 'contacts.svg', category: 'communication', tr: 'Kişiler' },
+  { name: 'contacts', file: 'contacts.svg', category: 'communication', tr: 'Kisi' },
   { name: 'email', file: 'email.svg', category: 'communication', tr: 'E-posta' },
   { name: 'camera', file: 'camera.svg', category: 'media', tr: 'Kamera' },
   { name: 'gallery', file: 'gallery.svg', category: 'media', tr: 'Galeri' },
   { name: 'video', file: 'video.svg', category: 'media', tr: 'Video' },
-  { name: 'music', file: 'music.svg', category: 'media', tr: 'Müzik' },
+  { name: 'music', file: 'music.svg', category: 'media', tr: 'Muzik' },
   { name: 'spotify', file: 'spotify.svg', category: 'media', tr: 'Spotify' },
   { name: 'maps', file: 'maps.svg', category: 'tools', tr: 'Haritalar' },
   { name: 'gps', file: 'gps.svg', category: 'tools', tr: 'GPS' },
@@ -23,34 +23,50 @@ const icons = [
   { name: 'taxi', file: 'taxi.svg', category: 'services', tr: 'Taksi' },
   { name: 'home', file: 'home.svg', category: 'services', tr: 'Emlak' },
   { name: 'food', file: 'food.svg', category: 'services', tr: 'Yemek' },
-  { name: 'electrician', file: 'electrician.svg', category: 'services', tr: 'Elektrikçi' },
+  { name: 'electrician', file: 'electrician.svg', category: 'services', tr: 'Elektrikci' },
   { name: 'mechanic', file: 'mechanic.svg', category: 'services', tr: 'Tamirci' },
   { name: 'market', file: 'market.svg', category: 'shopping', tr: 'Market' },
   { name: 'shop247', file: 'shop247.svg', category: 'shopping', tr: '24/7 Market' },
-  { name: 'business', file: 'business.svg', category: 'work', tr: 'İş' },
-  { name: 'browser', file: 'browser.svg', category: 'internet', tr: 'Tarayıcı' },
+  { name: 'business', file: 'business.svg', category: 'work', tr: 'Is' },
+  { name: 'browser', file: 'browser.svg', category: 'internet', tr: 'Tarayici' },
   { name: 'hospital', file: 'hospital.svg', category: 'emergency', tr: 'Hastane' },
   { name: 'police', file: 'police.svg', category: 'emergency', tr: 'Polis' },
   { name: 'gang', file: 'gang.svg', category: 'special', tr: 'Gang' }
 ];
 
+const versionNames = {
+  v1: 'v1: Flat (Klasik)',
+  v2: 'v2: Jelly Pop (Parlak/Jole)',
+  v3: 'v3: UwU Bunny (Tavsanli)',
+  v4: 'v4: Soft Cozy (Yumusak)',
+  v5: 'v5: Tactical (Polis)',
+  v6: 'v6: Drift Spec (Araba)'
+};
+
 let currentIcon = null;
-let currentTheme = 'pastel';
+let currentVersion = 'v1';
+let filteredIcons = [...icons];
 
 document.addEventListener('DOMContentLoaded', () => {
+  document.body.setAttribute('data-version', currentVersion);
+  updateVersionDisplay();
   renderIcons(icons);
   setupSearch();
-  setupThemeToggle();
+  setupVersionToggle();
   setupModal();
   updateIconCount(icons.length);
 });
+
+function updateVersionDisplay() {
+  document.getElementById('currentVersion').textContent = versionNames[currentVersion];
+}
 
 function renderIcons(iconsToRender) {
   const grid = document.getElementById('iconsGrid');
   grid.innerHTML = '';
   
   if (iconsToRender.length === 0) {
-    grid.innerHTML = '<div class="no-results">😔 Sonuç bulunamadı</div>';
+    grid.innerHTML = '<div class="no-results">Sonuc bulunamadi</div>';
     return;
   }
   
@@ -65,10 +81,13 @@ function createIconCard(icon, index) {
   card.className = 'icon-card';
   card.dataset.name = icon.name;
   card.dataset.category = icon.category;
-  card.style.animationDelay = `${index * 0.05}s`;
+  card.style.animationDelay = `${index * 0.03}s`;
+  
+  const iconPath = `icons/${currentVersion}/${icon.file}`;
+  
   card.innerHTML = `
     <div class="icon-wrapper">
-      <img src="icons/${icon.file}" alt="${icon.name}" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect fill=%22%23ddd%22 width=%2264%22 height=%2264%22 rx=%2216%22/><text x=%2232%22 y=%2236%22 text-anchor=%22middle%22 font-size=%2224%22>❓</text></svg>'">
+      <img src="${iconPath}" alt="${icon.name}" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect fill=%22%23ddd%22 width=%2264%22 height=%2264%22 rx=%2216%22/><text x=%2232%22 y=%2236%22 text-anchor=%22middle%22 font-size=%2224%22>?</text></svg>'">
     </div>
     <div class="icon-name">${icon.name}</div>
     <div class="icon-category">${icon.tr}</div>
@@ -89,38 +108,33 @@ function setupSearch() {
     const query = e.target.value.toLowerCase().trim();
     
     if (query === '') {
-      renderIcons(icons);
-      updateIconCount(icons.length);
-      return;
+      filteredIcons = [...icons];
+    } else {
+      filteredIcons = icons.filter(icon => 
+        icon.name.toLowerCase().includes(query) ||
+        icon.category.toLowerCase().includes(query) ||
+        icon.tr.toLowerCase().includes(query)
+      );
     }
     
-    const filtered = icons.filter(icon => 
-      icon.name.toLowerCase().includes(query) ||
-      icon.category.toLowerCase().includes(query) ||
-      icon.tr.toLowerCase().includes(query)
-    );
-    
-    renderIcons(filtered);
-    updateIconCount(filtered.length);
+    renderIcons(filteredIcons);
+    updateIconCount(filteredIcons.length);
   });
 }
 
-function setupThemeToggle() {
-  const themeBtns = document.querySelectorAll('.theme-btn');
-  themeBtns.forEach(btn => {
+function setupVersionToggle() {
+  const versionBtns = document.querySelectorAll('.version-btn');
+  versionBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      themeBtns.forEach(b => b.classList.remove('active'));
+      versionBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       
-      const theme = btn.dataset.theme;
-      currentTheme = theme;
-      document.body.className = '';
+      const version = btn.dataset.version;
+      currentVersion = version;
+      document.body.setAttribute('data-version', version);
+      updateVersionDisplay();
       
-      if (theme === 'dark') {
-        document.body.classList.add('dark-theme');
-      } else if (theme === 'light') {
-        document.body.classList.add('light-theme');
-      }
+      renderIcons(filteredIcons);
     });
   });
 }
@@ -132,7 +146,7 @@ function openModal(icon) {
   const modalTitle = document.getElementById('modalTitle');
   const modalCategory = document.getElementById('modalCategory');
   
-  modalIcon.src = `icons/${icon.file}`;
+  modalIcon.src = `icons/${currentVersion}/${icon.file}`;
   modalTitle.textContent = icon.tr;
   modalCategory.textContent = icon.category;
   modal.classList.add('active');
@@ -177,17 +191,17 @@ async function copySVG() {
   const originalText = btn.innerHTML;
   
   try {
-    btn.innerHTML = '⏳ Yükleniyor...';
+    btn.innerHTML = 'Yukleniyor...';
     btn.disabled = true;
     
-    const response = await fetch(`icons/${currentIcon.file}`);
-    if (!response.ok) throw new Error('SVG yüklenemedi');
+    const response = await fetch(`icons/${currentVersion}/${currentIcon.file}`);
+    if (!response.ok) throw new Error('SVG yuklenemedi');
     
     const svgText = await response.text();
     await navigator.clipboard.writeText(svgText);
     
-    btn.innerHTML = '✅ Kopyalandı!';
-    btn.style.background = '#98FB98';
+    btn.innerHTML = 'Kopyalandi!';
+    btn.style.background = '#4CAF50';
     
     setTimeout(() => {
       btn.innerHTML = originalText;
@@ -195,9 +209,9 @@ async function copySVG() {
       btn.disabled = false;
     }, 2000);
   } catch (err) {
-    console.error('Kopyalama hatası:', err);
-    btn.innerHTML = '❌ Hata!';
-    btn.style.background = '#FF6B6B';
+    console.error('Kopyalama hatasi:', err);
+    btn.innerHTML = 'Hata!';
+    btn.style.background = '#f44336';
     
     setTimeout(() => {
       btn.innerHTML = originalText;
@@ -214,11 +228,11 @@ async function downloadSVG() {
   const originalText = btn.innerHTML;
   
   try {
-    btn.innerHTML = '⏳ İndiriliyor...';
+    btn.innerHTML = 'Indiriliyor...';
     btn.disabled = true;
     
-    const response = await fetch(`icons/${currentIcon.file}`);
-    if (!response.ok) throw new Error('SVG yüklenemedi');
+    const response = await fetch(`icons/${currentVersion}/${currentIcon.file}`);
+    if (!response.ok) throw new Error('SVG yuklenemedi');
     
     const svgText = await response.text();
     const blob = new Blob([svgText], { type: 'image/svg+xml' });
@@ -226,14 +240,14 @@ async function downloadSVG() {
     
     const a = document.createElement('a');
     a.href = url;
-    a.download = `${currentIcon.name}.svg`;
+    a.download = `${currentIcon.name}_${currentVersion}.svg`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
     
-    btn.innerHTML = '✅ İndirildi!';
-    btn.style.background = '#98FB98';
+    btn.innerHTML = 'Indirildi!';
+    btn.style.background = '#4CAF50';
     
     setTimeout(() => {
       btn.innerHTML = originalText;
@@ -241,9 +255,9 @@ async function downloadSVG() {
       btn.disabled = false;
     }, 2000);
   } catch (err) {
-    console.error('İndirme hatası:', err);
-    btn.innerHTML = '❌ Hata!';
-    btn.style.background = '#FF6B6B';
+    console.error('Indirme hatasi:', err);
+    btn.innerHTML = 'Hata!';
+    btn.style.background = '#f44336';
     
     setTimeout(() => {
       btn.innerHTML = originalText;

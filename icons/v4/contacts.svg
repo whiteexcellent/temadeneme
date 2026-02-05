@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="contactsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#DDA0DD;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DA70D6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#contactsGrad)"/>
+  <circle cx="32" cy="24" r="10" fill="white" opacity="0.95"/>
+  <circle cx="32" cy="20" r="4" fill="#DA70D6"/>
+  <path d="M22 34c0-6 4-8 10-8s10 2 10 8v6H22v-6z" fill="white" opacity="0.9"/>
+  <circle cx="44" cy="18" r="5" fill="#98FB98"/>
+  <path d="M42 18h4M44 16v4" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="20" cy="40" r="3" fill="#FFE66D"/>
+  <circle cx="44" cy="40" r="3" fill="#87CEEB"/>
+</svg>

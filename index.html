@@ -3,29 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kawaii FiveM Phone Theme Icons</title>
+  <title>FiveM Theme Icons - 6 Versiyon</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>🎀 Kawaii FiveM Theme Icons</h1>
-      <p>Sevimli ve pastel emoji tarzı uygulama ikonları</p>
+      <h1>📱 FiveM Theme Icons</h1>
+      <p>6 Farklı Tema Versiyonu</p>
     </header>
 
     <div class="controls">
       <div class="search-box">
         <input type="text" id="searchInput" placeholder="🔍 İkon ara...">
       </div>
-      <div class="theme-toggle">
-        <button class="theme-btn pastel active" data-theme="pastel">🌸 Pastel</button>
-        <button class="theme-btn light" data-theme="light">☀️ Açık</button>
-        <button class="theme-btn dark" data-theme="dark">🌙 Koyu</button>
+      <div class="version-selector">
+        <button class="version-btn active" data-version="v1">🔹 v1: Flat</button>
+        <button class="version-btn" data-version="v2">🍬 v2: Jelly Pop</button>
+        <button class="version-btn" data-version="v3">🐰 v3: UwU Bunny</button>
+        <button class="version-btn" data-version="v4">☁️ v4: Soft Cozy</button>
+        <button class="version-btn" data-version="v5">👮 v5: Tactical</button>
+        <button class="version-btn" data-version="v6">🏎️ v6: Drift Spec</button>
       </div>
     </div>
 
     <div class="stats">
-      <span id="iconCount">36 ikon</span>
+      <span id="currentVersion">v1: Flat (Klasik)</span>
+      <span id="iconCount">33 ikon</span>
     </div>
 
     <div class="icons-grid" id="iconsGrid"></div>
@@ -45,7 +49,7 @@
   </div>
 
   <footer>
-    <p>Made with 💕 for FiveM Community</p>
+    <p>Made for FiveM Community</p>
   </footer>
 
   <script src="js/app.js"></script>
