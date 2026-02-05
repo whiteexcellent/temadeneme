@@ -87,7 +87,7 @@ function createIconCard(icon, index) {
 
 function updateStats() {
   document.getElementById('iconCount').textContent = `${icons.length} ikon`;
-  const vText = currentVersion === 'v1' ? 'Flat Versiyon' : 'Jelly Pop Versiyon';
+  const vText = currentVersion === 'v1' ? 'Flat Versiyon' : (currentVersion === 'v2' ? 'Jelly Pop Versiyon' : 'UwU Bunny Versiyon');
   const element = document.getElementById('versionInfo');
   if (element) element.textContent = vText;
 }
@@ -199,7 +199,7 @@ async function getProccessedSVG(url) {
   const response = await fetch(url);
   let svgText = await response.text();
   
-  if (isBoxed && currentVersion === 'v2') {
+  if (isBoxed && (currentVersion === 'v2' || currentVersion === 'v3')) {
     // SVG içeriğini parse et
     const parser = new DOMParser();
     const doc = parser.parseFromString(svgText, "image/svg+xml");
