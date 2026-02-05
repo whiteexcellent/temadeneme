@@ -36,13 +36,15 @@ const icons = [
 
 let currentIcon = null;
 let currentTheme = 'pastel';
+let currentVersion = 'v2'; // Varsayılan versiyon
 
 document.addEventListener('DOMContentLoaded', () => {
   renderIcons(icons);
   setupSearch();
   setupThemeToggle();
+  setupVersionToggle();
   setupModal();
-  updateIconCount(icons.length);
+  updateStats();
 });
 
 function renderIcons(iconsToRender) {
@@ -64,44 +66,62 @@ function createIconCard(icon, index) {
   const card = document.createElement('div');
   card.className = 'icon-card';
   card.dataset.name = icon.name;
-  card.dataset.category = icon.category;
-  card.style.animationDelay = `${index * 0.05}s`;
+  card.style.animationDelay = `${index * 0.03}s`; // Daha hızlı animasyon
+  
+  // Versiyona göre ikon yolu
+  const iconPath = `icons/${currentVersion}/${icon.file}`;
+  
   card.innerHTML = `
     <div class="icon-wrapper">
-      <img src="icons/${icon.file}" alt="${icon.name}" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect fill=%22%23ddd%22 width=%2264%22 height=%2264%22 rx=%2216%22/><text x=%2232%22 y=%2236%22 text-anchor=%22middle%22 font-size=%2224%22>❓</text></svg>'">
+      <img src="${iconPath}" alt="${icon.name}" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><text x=%2232%22 y=%2236%22 font-size=%2224%22 text-anchor=%22middle%22>⏳</text></svg>'">
     </div>
     <div class="icon-name">${icon.name}</div>
     <div class="icon-category">${icon.tr}</div>
   `;
   
   card.addEventListener('click', () => openModal(icon));
-  
   return card;
 }
 
-function updateIconCount(count) {
-  document.getElementById('iconCount').textContent = `${count} ikon`;
+function updateStats() {
+  document.getElementById('iconCount').textContent = `${icons.length} ikon`;
+  document.getElementById('versionInfo').textContent = currentVersion === 'v1' ? 'Flat Versiyon' : 'Jelly Pop Versiyon';
+}
+
+function setupVersionToggle() {
+  const versionBtns = document.querySelectorAll('.v-btn');
+  versionBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.classList.contains('active')) return;
+      
+      versionBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      currentVersion = btn.dataset.version;
+      updateStats();
+      
+      // İkonları yeniden render et (hafif bir animasyonla)
+      const grid = document.getElementById('iconsGrid');
+      grid.style.opacity = '0';
+      setTimeout(() => {
+        renderIcons(icons);
+        grid.style.opacity = '1';
+      }, 200);
+    });
+  });
 }
 
 function setupSearch() {
   const searchInput = document.getElementById('searchInput');
   searchInput.addEventListener('input', (e) => {
     const query = e.target.value.toLowerCase().trim();
-    
-    if (query === '') {
-      renderIcons(icons);
-      updateIconCount(icons.length);
-      return;
-    }
-    
     const filtered = icons.filter(icon => 
-      icon.name.toLowerCase().includes(query) ||
-      icon.category.toLowerCase().includes(query) ||
+      icon.name.includes(query) || 
+      icon.category.includes(query) ||
       icon.tr.toLowerCase().includes(query)
     );
-    
     renderIcons(filtered);
-    updateIconCount(filtered.length);
+    document.getElementById('iconCount').textContent = `${filtered.length} ikon`;
   });
 }
 
@@ -111,16 +131,7 @@ function setupThemeToggle() {
     btn.addEventListener('click', () => {
       themeBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      
-      const theme = btn.dataset.theme;
-      currentTheme = theme;
-      document.body.className = '';
-      
-      if (theme === 'dark') {
-        document.body.classList.add('dark-theme');
-      } else if (theme === 'light') {
-        document.body.classList.add('light-theme');
-      }
+      document.body.className = btn.dataset.theme === 'pastel' ? '' : `${btn.dataset.theme}-theme`;
     });
   });
 }
@@ -129,126 +140,74 @@ function openModal(icon) {
   currentIcon = icon;
   const modal = document.getElementById('modal');
   const modalIcon = document.getElementById('modalIcon');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalCategory = document.getElementById('modalCategory');
   
-  modalIcon.src = `icons/${icon.file}`;
-  modalTitle.textContent = icon.tr;
-  modalCategory.textContent = icon.category;
+  modalIcon.src = `icons/${currentVersion}/${icon.file}`;
+  document.getElementById('modalTitle').textContent = icon.tr;
+  document.getElementById('modalCategory').textContent = icon.category;
+  
   modal.classList.add('active');
-  
   document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
-  const modal = document.getElementById('modal');
-  modal.classList.remove('active');
+  document.getElementById('modal').classList.remove('active');
   document.body.style.overflow = '';
 }
 
 function setupModal() {
-  const modal = document.getElementById('modal');
-  const closeBtn = document.getElementById('closeModal');
-  const copyBtn = document.getElementById('copyBtn');
-  const downloadBtn = document.getElementById('downloadBtn');
-  
-  closeBtn.addEventListener('click', closeModal);
-  
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      closeModal();
-    }
+  document.getElementById('closeModal').addEventListener('click', closeModal);
+  document.getElementById('modal').addEventListener('click', e => {
+    if (e.target.id === 'modal') closeModal();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
   });
   
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeModal();
+  document.getElementById('copyBtn').addEventListener('click', async () => {
+    if (!currentIcon) return;
+    const btn = document.getElementById('copyBtn');
+    const originalContent = btn.innerHTML;
+    
+    try {
+      btn.innerHTML = '⏳';
+      const res = await fetch(`icons/${currentVersion}/${currentIcon.file}`);
+      const svg = await res.text();
+      await navigator.clipboard.writeText(svg);
+      btn.innerHTML = '✅ Kopyalandı';
+      btn.style.background = 'var(--accent-mint)';
+    } catch (e) {
+      btn.innerHTML = '❌ Hata';
     }
+    setTimeout(() => {
+      btn.innerHTML = originalContent;
+      btn.style.background = '';
+    }, 2000);
   });
   
-  copyBtn.addEventListener('click', copySVG);
-  downloadBtn.addEventListener('click', downloadSVG);
-}
-
-async function copySVG() {
-  if (!currentIcon) return;
-  
-  const btn = document.getElementById('copyBtn');
-  const originalText = btn.innerHTML;
-  
-  try {
-    btn.innerHTML = '⏳ Yükleniyor...';
-    btn.disabled = true;
+  document.getElementById('downloadBtn').addEventListener('click', async () => {
+    if (!currentIcon) return;
+    const btn = document.getElementById('downloadBtn');
+    const originalContent = btn.innerHTML;
     
-    const response = await fetch(`icons/${currentIcon.file}`);
-    if (!response.ok) throw new Error('SVG yüklenemedi');
-    
-    const svgText = await response.text();
-    await navigator.clipboard.writeText(svgText);
-    
-    btn.innerHTML = '✅ Kopyalandı!';
-    btn.style.background = '#98FB98';
-    
+    try {
+      btn.innerHTML = '⏳';
+      const res = await fetch(`icons/${currentVersion}/${currentIcon.file}`);
+      const svg = await res.text();
+      const blob = new Blob([svg], { type: 'image/svg+xml' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${currentIcon.name}_${currentVersion}.svg`;
+      a.click();
+      URL.revokeObjectURL(url);
+      btn.innerHTML = '✅ İndirildi';
+      btn.style.background = 'var(--accent-mint)';
+    } catch (e) {
+      btn.innerHTML = '❌ Hata';
+    }
     setTimeout(() => {
-      btn.innerHTML = originalText;
+      btn.innerHTML = originalContent;
       btn.style.background = '';
-      btn.disabled = false;
     }, 2000);
-  } catch (err) {
-    console.error('Kopyalama hatası:', err);
-    btn.innerHTML = '❌ Hata!';
-    btn.style.background = '#FF6B6B';
-    
-    setTimeout(() => {
-      btn.innerHTML = originalText;
-      btn.style.background = '';
-      btn.disabled = false;
-    }, 2000);
-  }
-}
-
-async function downloadSVG() {
-  if (!currentIcon) return;
-  
-  const btn = document.getElementById('downloadBtn');
-  const originalText = btn.innerHTML;
-  
-  try {
-    btn.innerHTML = '⏳ İndiriliyor...';
-    btn.disabled = true;
-    
-    const response = await fetch(`icons/${currentIcon.file}`);
-    if (!response.ok) throw new Error('SVG yüklenemedi');
-    
-    const svgText = await response.text();
-    const blob = new Blob([svgText], { type: 'image/svg+xml' });
-    const url = URL.createObjectURL(blob);
-    
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${currentIcon.name}.svg`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    
-    btn.innerHTML = '✅ İndirildi!';
-    btn.style.background = '#98FB98';
-    
-    setTimeout(() => {
-      btn.innerHTML = originalText;
-      btn.style.background = '';
-      btn.disabled = false;
-    }, 2000);
-  } catch (err) {
-    console.error('İndirme hatası:', err);
-    btn.innerHTML = '❌ Hata!';
-    btn.style.background = '#FF6B6B';
-    
-    setTimeout(() => {
-      btn.innerHTML = originalText;
-      btn.style.background = '';
-      btn.disabled = false;
-    }, 2000);
-  }
+  });
 }
