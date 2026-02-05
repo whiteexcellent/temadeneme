@@ -3,29 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kawaii FiveM Phone Theme Icons</title>
+  <title>Kawaii FiveM Theme Icons</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Ekstra stiller - Versiyon Toggle için */
+    .filters {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 15px;
+    }
+    
+    .version-toggle {
+      display: flex;
+      align-items: center;
+      background: white;
+      padding: 5px;
+      border-radius: 30px;
+      box-shadow: var(--shadow-soft);
+      border: 2px solid rgba(255,255,255,0.5);
+    }
+    
+    .toggle-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-right: 10px;
+      padding-left: 10px;
+    }
+    
+    .toggle-switch {
+      display: flex;
+      gap: 5px;
+    }
+    
+    .v-btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      background: transparent;
+      color: var(--text-secondary);
+      transition: all 0.3s ease;
+    }
+    
+    .v-btn:hover {
+      background: rgba(0,0,0,0.05);
+    }
+    
+    .v-btn.active {
+      background: var(--accent-pink);
+      color: white;
+      box-shadow: 0 4px 10px rgba(255, 158, 170, 0.4);
+    }
+    
+    .separator {
+      margin: 0 10px;
+      color: #ddd;
+    }
+    
+    #versionInfo {
+      font-weight: 600;
+      color: var(--accent-pink-dark);
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>🎀 Kawaii FiveM Theme Icons</h1>
-      <p>Sevimli ve pastel emoji tarzı uygulama ikonları</p>
+      <h1>🎀 Kawaii FiveM Theme</h1>
+      <p>Sevimli, pastel ve jöle kıvamında FiveM ikon paketi</p>
     </header>
 
     <div class="controls">
       <div class="search-box">
         <input type="text" id="searchInput" placeholder="🔍 İkon ara...">
       </div>
-      <div class="theme-toggle">
-        <button class="theme-btn pastel active" data-theme="pastel">🌸 Pastel</button>
-        <button class="theme-btn light" data-theme="light">☀️ Açık</button>
-        <button class="theme-btn dark" data-theme="dark">🌙 Koyu</button>
+      
+      <div class="filters">
+        <div class="version-toggle">
+          <span class="toggle-label">Versiyon:</span>
+          <div class="toggle-switch">
+            <button class="v-btn" data-version="v1">v1 (Flat)</button>
+            <button class="v-btn active" data-version="v2">v2 (Jelly)</button>
+          </div>
+        </div>
+
+        <div class="theme-toggle">
+          <button class="theme-btn pastel active" data-theme="pastel" title="Pastel Tema">🌸</button>
+          <button class="theme-btn light" data-theme="light" title="Açık Tema">☀️</button>
+          <button class="theme-btn dark" data-theme="dark" title="Koyu Tema">🌙</button>
+        </div>
       </div>
     </div>
 
     <div class="stats">
-      <span id="iconCount">36 ikon</span>
+      <span id="iconCount">Yükleniyor...</span>
+      <span class="separator">•</span>
+      <span id="versionInfo">Jelly Pop Versiyon</span>
     </div>
 
     <div class="icons-grid" id="iconsGrid"></div>
@@ -34,12 +114,23 @@
   <div class="modal" id="modal">
     <span class="close-modal" id="closeModal">&times;</span>
     <div class="modal-content">
-      <img class="modal-icon" id="modalIcon" src="" alt="">
+      <div class="modal-header">
+        <img class="modal-icon" id="modalIcon" src="" alt="">
+      </div>
       <h2 id="modalTitle"></h2>
       <p id="modalCategory" class="modal-category"></p>
+      
       <div class="modal-actions">
-        <button class="btn btn-primary" id="copyBtn">📋 SVG Kopyala</button>
-        <button class="btn btn-secondary" id="downloadBtn">💾 İndir</button>
+        <button class="btn btn-primary" id="copyBtn">
+          <span class="icon">📋</span> SVG Kopyala
+        </button>
+        <button class="btn btn-secondary" id="downloadBtn">
+          <span class="icon">💾</span> İndir
+        </button>
+      </div>
+      
+      <div class="modal-preview-info">
+        <small style="display:block; margin-top:15px; color:#aaa;">Önizleme (64x64px)</small>
       </div>
     </div>
   </div>
