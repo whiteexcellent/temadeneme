@@ -2,15 +2,16 @@
   "name": "kawaii-fivetheme-icons",
   "version": "1.0.0",
   "description": "Kawaii FiveM Phone Theme Icons - 36 SVG icons with viewer",
-  "main": "index.html",
+  "type": "module",
   "scripts": {
-    "start": "npx serve .",
-    "build": "echo 'Static site - no build needed'"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "keywords": ["fivem", "icons", "svg", "kawaii", "phone-theme"],
   "author": "Theme Designer",
   "license": "MIT",
   "devDependencies": {
-    "serve": "^14.0.0"
+    "vite": "^5.0.0"
   }
 }
