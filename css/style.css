@@ -211,44 +211,211 @@ body[data-version="v5"] .version-btn:not(.active) {
   color: var(--text-primary);
 }
 
-/* Version 6: Drift Spec */
+/* Version 6: Drift Spec - Realistic Mechanical with Carbon Fiber */
 body[data-version="v6"] {
-  --bg-primary: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-  --bg-secondary: #1a1a2e;
-  --text-primary: #00d2ff;
-  --text-secondary: #3a7bd5;
-  --accent-primary: #00d2ff;
-  --accent-secondary: #3a7bd5;
-  --shadow-soft: 0 4px 20px rgba(0, 210, 255, 0.2);
-  --shadow-hover: 0 8px 30px rgba(0, 210, 255, 0.4);
+  --bg-primary: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.3) 2px,
+      rgba(0,0,0,0.3) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.3) 2px,
+      rgba(0,0,0,0.3) 4px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 3px,
+      rgba(20,20,20,0.8) 3px,
+      rgba(20,20,20,0.8) 6px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 3px,
+      rgba(30,30,30,0.6) 3px,
+      rgba(30,30,30,0.6) 6px
+    ),
+    linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #1a1a1a 50%, #252525 75%, #1a1a1a 100%);
+  --bg-secondary: linear-gradient(145deg, #2a2a2a 0%, #1f1f1f 50%, #151515 100%);
+  --text-primary: #e0e0e0;
+  --text-secondary: #888888;
+  --accent-primary: #ff6600;
+  --accent-secondary: #cc5200;
+  --shadow-soft: 
+    inset 0 2px 4px rgba(255,255,255,0.1),
+    0 4px 6px rgba(0,0,0,0.6),
+    0 8px 20px rgba(0,0,0,0.8);
+  --shadow-hover: 
+    inset 0 2px 4px rgba(255,255,255,0.15),
+    0 6px 12px rgba(0,0,0,0.7),
+    0 12px 30px rgba(0,0,0,0.9),
+    0 0 20px rgba(255,102,0,0.3);
 }
 
 body[data-version="v6"] .version-btn[data-version="v6"] {
-  background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+  background: linear-gradient(135deg, #ff6600, #cc5200);
   color: white;
+  border: 2px solid #ff8533;
+  box-shadow: 
+    inset 0 1px 2px rgba(255,255,255,0.3),
+    0 4px 8px rgba(0,0,0,0.5);
 }
 
+/* Carbon Fiber Box Mode - Icon Cards */
 body[data-version="v6"] .icon-card {
-  background: var(--bg-secondary);
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 1px,
+      rgba(0,0,0,0.4) 1px,
+      rgba(0,0,0,0.4) 2px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 1px,
+      rgba(0,0,0,0.4) 1px,
+      rgba(0,0,0,0.4) 2px
+    ),
+    linear-gradient(145deg, #3a3a3a 0%, #252525 25%, #1a1a1a 50%, #202020 75%, #2a2a2a 100%);
+  border: 2px solid #404040;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    0 4px 6px rgba(0,0,0,0.6),
+    0 6px 20px rgba(0,0,0,0.8);
+}
+
+body[data-version="v6"] .icon-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+}
+
+body[data-version="v6"] .icon-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.5), transparent);
+}
+
+body[data-version="v6"] .icon-card:hover {
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 1px,
+      rgba(0,0,0,0.3) 1px,
+      rgba(0,0,0,0.3) 2px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 1px,
+      rgba(0,0,0,0.3) 1px,
+      rgba(0,0,0,0.3) 2px
+    ),
+    linear-gradient(145deg, #4a4a4a 0%, #303030 25%, #252525 50%, #2a2a2a 75%, #353535 100%);
+  border-color: #ff6600;
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.15),
+    0 6px 12px rgba(0,0,0,0.7),
+    0 10px 30px rgba(0,0,0,0.9),
+    0 0 30px rgba(255,102,0,0.4);
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* Mechanical Bolts/Corners Effect */
+body[data-version="v6"] .icon-card {
+  position: relative;
+}
+
+body[data-version="v6"] .icon-wrapper {
+  background: 
+    radial-gradient(ellipse at center, rgba(255,102,0,0.1) 0%, transparent 70%),
+    linear-gradient(145deg, #2a2a2a 0%, #1f1f1f 100%);
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: 
+    inset 0 2px 4px rgba(0,0,0,0.5),
+    0 1px 0 rgba(255,255,255,0.05);
 }
 
 body[data-version="v6"] .search-box input {
-  background: var(--bg-secondary);
+  background: 
+    linear-gradient(145deg, #2a2a2a 0%, #1f1f1f 50%, #151515 100%);
   color: var(--text-primary);
-  border-color: var(--accent-primary);
+  border-color: #404040;
+  border-radius: 4px;
+  box-shadow: 
+    inset 0 2px 4px rgba(0,0,0,0.5),
+    0 1px 0 rgba(255,255,255,0.05);
+}
+
+body[data-version="v6"] .search-box input:focus {
+  border-color: #ff6600;
+  box-shadow: 
+    inset 0 2px 4px rgba(0,0,0,0.5),
+    0 0 15px rgba(255,102,0,0.3);
 }
 
 body[data-version="v6"] .icon-name {
   color: var(--text-primary);
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+  letter-spacing: 0.5px;
 }
 
 body[data-version="v6"] .icon-category {
-  color: var(--text-secondary);
+  color: #666;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 body[data-version="v6"] .version-btn:not(.active) {
-  background: var(--bg-secondary);
-  color: var(--text-primary);
+  background: linear-gradient(145deg, #2a2a2a 0%, #1f1f1f 100%);
+  color: #888;
+  border: 1px solid #333;
+}
+
+body[data-version="v6"] header h1 {
+  background: linear-gradient(135deg, #ff6600, #ff8533, #cc5200);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+}
+
+body[data-version="v6"] .btn-primary {
+  background: linear-gradient(135deg, #ff6600, #cc5200);
+  border: 1px solid #ff8533;
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.2),
+    0 4px 8px rgba(0,0,0,0.4);
+}
+
+body[data-version="v6"] .btn-secondary {
+  background: linear-gradient(145deg, #3a3a3a 0%, #252525 100%);
+  color: #ccc;
+  border: 1px solid #404040;
 }
 
 .stats {
