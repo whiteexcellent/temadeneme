@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupSearch();
   setupThemeToggle();
   setupVersionToggle();
+  document.body.dataset.version = currentVersion; // Başlangıçta varsayılan versiyonu ayarla
   setupBoxedToggle();
   setupModal();
   updateStats();
@@ -125,6 +126,7 @@ function setupVersionToggle() {
       btn.classList.add('active');
       
       currentVersion = btn.dataset.version;
+      document.body.dataset.version = currentVersion; // CSS için versiyon verisi
       updateStats();
       
       // v1 seçilirse boxed modunu kapat (v1 zaten kutulu)
