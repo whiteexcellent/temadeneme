@@ -68,7 +68,7 @@ function createIconCard(icon, index) {
   card.style.animationDelay = `${index * 0.05}s`;
   card.innerHTML = `
     <div class="icon-wrapper">
-      <img src="./icons/${icon.file}" alt="${icon.name}" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect fill=%22%23ddd%22 width=%2264%22 height=%2264%22 rx=%2216%22/><text x=%2232%22 y=%2236%22 text-anchor=%22middle%22 font-size=%2224%22>❓</text></svg>'">
+      <img src="icons/${icon.file}" alt="${icon.name}" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect fill=%22%23ddd%22 width=%2264%22 height=%2264%22 rx=%2216%22/><text x=%2232%22 y=%2236%22 text-anchor=%22middle%22 font-size=%2224%22>❓</text></svg>'">
     </div>
     <div class="icon-name">${icon.name}</div>
     <div class="icon-category">${icon.tr}</div>
@@ -132,7 +132,7 @@ function openModal(icon) {
   const modalTitle = document.getElementById('modalTitle');
   const modalCategory = document.getElementById('modalCategory');
   
-  modalIcon.src = `./icons/${icon.file}`;
+  modalIcon.src = `icons/${icon.file}`;
   modalTitle.textContent = icon.tr;
   modalCategory.textContent = icon.category;
   modal.classList.add('active');
@@ -180,7 +180,7 @@ async function copySVG() {
     btn.innerHTML = '⏳ Yükleniyor...';
     btn.disabled = true;
     
-    const response = await fetch(`./icons/${currentIcon.file}`);
+    const response = await fetch(`icons/${currentIcon.file}`);
     if (!response.ok) throw new Error('SVG yüklenemedi');
     
     const svgText = await response.text();
@@ -217,7 +217,7 @@ async function downloadSVG() {
     btn.innerHTML = '⏳ İndiriliyor...';
     btn.disabled = true;
     
-    const response = await fetch(`./icons/${currentIcon.file}`);
+    const response = await fetch(`icons/${currentIcon.file}`);
     if (!response.ok) throw new Error('SVG yüklenemedi');
     
     const svgText = await response.text();
