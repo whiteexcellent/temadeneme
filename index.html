@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kawaii FiveM Phone Theme Icons</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Kawaii FiveM Theme Icons</h1>
+      <p>Sevimli ve pastel emoji tarzı uygulama ikonları</p>
+    </header>
+
+    <div class="controls">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="İkon ara...">
+      </div>
+      <div class="theme-toggle">
+        <button class="theme-btn pastel" data-theme="pastel">Pastel</button>
+        <button class="theme-btn light" data-theme="light">Açık</button>
+        <button class="theme-btn dark" data-theme="dark">Koyu</button>
+      </div>
+    </div>
+
+    <div class="icons-grid" id="iconsGrid"></div>
+  </div>
+
+  <div class="modal" id="modal">
+    <span class="close-modal" id="closeModal">&times;</span>
+    <div class="modal-content">
+      <img class="modal-icon" id="modalIcon" src="" alt="">
+      <h2 id="modalTitle"></h2>
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="copyBtn">SVG Kopyala</button>
+        <button class="btn btn-secondary" id="downloadBtn">İndir</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
