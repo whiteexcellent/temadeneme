@@ -210,15 +210,25 @@ async function getProccessedSVG(url) {
     
     // Versiyona göre arka plan stili
     if (currentVersion === 'v5') {
-      // v5 (Tactical) için sert, metalik/koyu arka plan
+      // v5 (Tactical Elite) için Fırçalanmış Metal ve Vida Detaylı Kutu
       boxDef = `
         <defs>
           <linearGradient id="tacBox" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#2C3E50"/>
+            <stop offset="0%" stop-color="#1F2937"/>
+            <stop offset="50%" stop-color="#111827"/>
             <stop offset="100%" stop-color="#000000"/>
           </linearGradient>
+          <linearGradient id="tacStroke" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#4B5563"/>
+            <stop offset="50%" stop-color="#9CA3AF"/>
+            <stop offset="100%" stop-color="#4B5563"/>
+          </linearGradient>
         </defs>
-        <rect x="2" y="2" width="60" height="60" rx="4" fill="url(#tacBox)" stroke="#7F8C8D" stroke-width="2"/>
+        <rect x="2" y="2" width="60" height="60" rx="8" fill="url(#tacBox)" stroke="url(#tacStroke)" stroke-width="2"/>
+        <circle cx="6" cy="6" r="1.5" fill="#6B7280"/>
+        <circle cx="58" cy="6" r="1.5" fill="#6B7280"/>
+        <circle cx="6" cy="58" r="1.5" fill="#6B7280"/>
+        <circle cx="58" cy="58" r="1.5" fill="#6B7280"/>
       `;
     } else if (currentVersion === 'v6') {
       // v6 (Drift/Realistik) için Karbon Fiber Doku
