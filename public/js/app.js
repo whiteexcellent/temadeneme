@@ -36,13 +36,15 @@ const icons = [
 
 let currentIcon = null;
 let currentTheme = 'pastel';
-let currentVersion = 'v2'; // Varsayılan versiyon
+let currentVersion = 'v2';
+let isBoxed = false;
 
 document.addEventListener('DOMContentLoaded', () => {
   renderIcons(icons);
   setupSearch();
   setupThemeToggle();
   setupVersionToggle();
+  setupBoxedToggle();
   setupModal();
   updateStats();
 });
@@ -66,13 +68,13 @@ function createIconCard(icon, index) {
   const card = document.createElement('div');
   card.className = 'icon-card';
   card.dataset.name = icon.name;
-  card.style.animationDelay = `${index * 0.03}s`; // Daha hızlı animasyon
+  card.style.animationDelay = `${index * 0.03}s`;
   
-  // Versiyona göre ikon yolu
   const iconPath = `icons/${currentVersion}/${icon.file}`;
+  const wrapperClass = isBoxed ? 'icon-wrapper boxed' : 'icon-wrapper';
   
   card.innerHTML = `
-    <div class="icon-wrapper">
+    <div class="${wrapperClass}">
       <img src="${iconPath}" alt="${icon.name}" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><text x=%2232%22 y=%2236%22 font-size=%2224%22 text-anchor=%22middle%22>⏳</text></svg>'">
     </div>
     <div class="icon-name">${icon.name}</div>
@@ -85,7 +87,32 @@ function createIconCard(icon, index) {
 
 function updateStats() {
   document.getElementById('iconCount').textContent = `${icons.length} ikon`;
-  document.getElementById('versionInfo').textContent = currentVersion === 'v1' ? 'Flat Versiyon' : 'Jelly Pop Versiyon';
+  const vText = currentVersion === 'v1' ? 'Flat Versiyon' : 'Jelly Pop Versiyon';
+  const element = document.getElementById('versionInfo');
+  if (element) element.textContent = vText;
+}
+
+function setupBoxedToggle() {
+  const checkbox = document.getElementById('bgCheck');
+  if (!checkbox) return;
+  
+  checkbox.addEventListener('change', (e) => {
+    isBoxed = e.target.checked;
+    
+    // CSS ile anlık önizleme güncellemesi
+    const wrappers = document.querySelectorAll('.icon-wrapper');
+    const modalWrapper = document.getElementById('modalIconWrapper');
+    
+    wrappers.forEach(w => {
+      if (isBoxed) w.classList.add('boxed');
+      else w.classList.remove('boxed');
+    });
+    
+    if (modalWrapper) {
+      if (isBoxed) modalWrapper.classList.add('boxed');
+      else modalWrapper.classList.remove('boxed');
+    }
+  });
 }
 
 function setupVersionToggle() {
@@ -100,7 +127,20 @@ function setupVersionToggle() {
       currentVersion = btn.dataset.version;
       updateStats();
       
-      // İkonları yeniden render et (hafif bir animasyonla)
+      // v1 seçilirse boxed modunu kapat (v1 zaten kutulu)
+      if (currentVersion === 'v1') {
+        const bgCheck = document.getElementById('bgCheck');
+        if (bgCheck && bgCheck.checked) {
+          bgCheck.click(); // Programatik olarak tıkla
+        }
+        // Kutulu seçeneğini gizle/disable et
+        document.getElementById('bgControl').style.opacity = '0.5';
+        document.getElementById('bgCheck').disabled = true;
+      } else {
+        document.getElementById('bgControl').style.opacity = '1';
+        document.getElementById('bgCheck').disabled = false;
+      }
+      
       const grid = document.getElementById('iconsGrid');
       grid.style.opacity = '0';
       setTimeout(() => {
@@ -154,6 +194,42 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
+// SVG Manipülasyon Yardımcısı
+async function getProccessedSVG(url) {
+  const response = await fetch(url);
+  let svgText = await response.text();
+  
+  if (isBoxed && currentVersion === 'v2') {
+    // SVG içeriğini parse et
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(svgText, "image/svg+xml");
+    const svgEl = doc.querySelector('svg');
+    const content = svgEl.innerHTML;
+    
+    // Yeni SVG oluştur (Arka planlı)
+    // Box rengi temaya uygun pastel beyaz
+    const newSvg = `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bgBoxGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f0f0f0"/>
+    </linearGradient>
+    <filter id="bgShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#bgBoxGrad)" stroke="#e6e6e6" stroke-width="1"/>
+  <g transform="translate(7, 7) scale(0.78)">
+    ${content}
+  </g>
+</svg>`;
+    return newSvg;
+  }
+  
+  return svgText;
+}
+
 function setupModal() {
   document.getElementById('closeModal').addEventListener('click', closeModal);
   document.getElementById('modal').addEventListener('click', e => {
@@ -170,12 +246,12 @@ function setupModal() {
     
     try {
       btn.innerHTML = '⏳';
-      const res = await fetch(`icons/${currentVersion}/${currentIcon.file}`);
-      const svg = await res.text();
-      await navigator.clipboard.writeText(svg);
+      const svgContent = await getProccessedSVG(`icons/${currentVersion}/${currentIcon.file}`);
+      await navigator.clipboard.writeText(svgContent);
       btn.innerHTML = '✅ Kopyalandı';
       btn.style.background = 'var(--accent-mint)';
     } catch (e) {
+      console.error(e);
       btn.innerHTML = '❌ Hata';
     }
     setTimeout(() => {
@@ -191,13 +267,14 @@ function setupModal() {
     
     try {
       btn.innerHTML = '⏳';
-      const res = await fetch(`icons/${currentVersion}/${currentIcon.file}`);
-      const svg = await res.text();
-      const blob = new Blob([svg], { type: 'image/svg+xml' });
+      const svgContent = await getProccessedSVG(`icons/${currentVersion}/${currentIcon.file}`);
+      const blob = new Blob([svgContent], { type: 'image/svg+xml' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `${currentIcon.name}_${currentVersion}.svg`;
+      // İsimlendirme: icon_v2_boxed.svg gibi
+      const suffix = isBoxed ? '_boxed' : '';
+      a.download = `${currentIcon.name}_${currentVersion}${suffix}.svg`;
       a.click();
       URL.revokeObjectURL(url);
       btn.innerHTML = '✅ İndirildi';
