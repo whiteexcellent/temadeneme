@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="streetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35"/>
+      <stop offset="100%" style="stop-color:#FFD93D"/>
+    </linearGradient>
+    <filter id="spray">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2"/>
+    </filter>
+  </defs>
+  <rect width="64" height="64" fill="#1a1a1a"/>
+  <g fill="none" stroke="url(#streetGrad)" stroke-width="3" filter="url(#spray)">
+    <path d="M8 20 Q32 10 56 20"/>
+    <path d="M8 32 Q32 22 56 32"/>
+    <path d="M8 44 Q32 34 56 44"/>
+    <circle cx="32" cy="52" r="4"/>
+  </g>
+</svg>

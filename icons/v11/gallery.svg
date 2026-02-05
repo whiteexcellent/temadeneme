@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" fill="#000000"/>
+  <text x="8" y="14" font-family="monospace" font-size="6" fill="#00FF00">[gallery]</text>
+  <text x="8" y="26" font-family="monospace" font-size="8" fill="#00FF00">+--------+</text>
+  <text x="8" y="36" font-family="monospace" font-size="8" fill="#00FF00">|  ****  |</text>
+  <text x="8" y="46" font-family="monospace" font-size="8" fill="#00FF00">|  ****  |</text>
+  <text x="8" y="56" font-family="monospace" font-size="8" fill="#00FF00">+--------+</text>
+  <text x="44" y="58" font-family="monospace" font-size="5" fill="#00FF00">>_</text>
+</svg>

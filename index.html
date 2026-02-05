@@ -3,155 +3,237 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🌌 Infinite Icon Engine v6 | Drift Edition - Pure SVG</title>
+  <title>🌌 Infinite Icon Engine | Ultimate Edition - 418 Icons</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="container">
     <header>
       <h1>🌌 Infinite Icon Engine</h1>
-      <p>v6 Drift Edition | 38 Pure SVG Icons</p>
-      <div class="engine-badge">🏎️ Drift Theme + Neon Gradients</div>
+      <p>Ultimate Edition | 11 Themes | 418 Pure SVG Icons</p>
+      <div class="engine-badge">🏎️ v6 Drift to 💎 v16 Sketch</div>
     </header>
 
     <div class="controls">
       <div class="search-box">
-        <input type="text" id="searchInput" placeholder="🔍 İkon ara... (örn: phone, drift, turbo)">
-        <button id="globalSearchBtn" class="search-btn">🌐 Ara</button>
+        <input type="text" id="searchInput" placeholder="🔍 Search 418 icons... (Ctrl+F)">
+        <button class="search-btn" onclick="showRandom()">🎲 Random</button>
       </div>
       
       <div class="view-controls">
         <div class="view-toggle">
           <button class="view-btn active" data-view="grid">⊞ Grid</button>
-          <button class="view-btn" data-view="list">☰ Liste</button>
+          <button class="view-btn" data-view="list">☰ List</button>
         </div>
-        <div class="theme-toggle">
-          <button class="theme-btn active" data-theme="dark">🌙 Dark</button>
-          <button class="theme-btn" data-theme="light">☀️ Light</button>
+        <div class="mode-toggle">
+          <button class="mode-btn active" data-mode="dark">🌙</button>
+          <button class="mode-btn" data-mode="light">☀️</button>
         </div>
       </div>
     </div>
 
     <div class="features-bar">
       <button class="feature-btn" id="favoritesBtn">
-        <span>❤️</span> Favoriler
+        <span>❤️</span> Favorites
       </button>
       <button class="feature-btn" id="compareBtn">
-        <span>⚖️</span> Karşılaştır
+        <span>⚖️</span> Compare
       </button>
       <button class="feature-btn" id="batchBtn">
-        <span>📦</span> Toplu İşlem
+        <span>📦</span> Batch
       </button>
       <button class="feature-btn" id="collectionsBtn">
-        <span>📁</span> Koleksiyonlar
+        <span>📁</span> Collections
+      </button>
+      <button class="feature-btn" id="randomBtn">
+        <span>🎲</span> Random
       </button>
     </div>
 
-    <div class="version-tabs">
-      <div class="tab-section">
-        <h3 class="section-title">🎨 Versiyonlar</h3>
-        <div class="tab-group">
-          <button class="version-btn active" data-version="v6">
-            <span class="version-icon">🏎️</span>
-            <span class="version-name">v6 Drift</span>
-            <span class="badge">38 SVG</span>
+    <!-- Theme Selector -->
+    <div class="theme-selector">
+      <h3 class="section-title">🎨 Select Theme (11 Total)</h3>
+      
+      <div class="theme-category">
+        <h4>🏎️ Featured</h4>
+        <div class="theme-grid">
+          <button class="theme-select-btn active" data-theme="v6">
+            <span class="theme-icon">🏎️</span>
+            <span class="theme-name">v6 Drift</span>
+            <span class="theme-colors">
+              <span class="dot" style="background:#FF6B35"></span>
+              <span class="dot" style="background:#FF2D7A"></span>
+            </span>
           </button>
-          <button class="version-btn" data-version="v7" data-source="iconify" data-prefix="lucide">
-            <span class="version-icon">⚡</span>
-            <span class="version-name">v7 Cyber</span>
+        </div>
+      </div>
+
+      <div class="theme-category">
+        <h4>📱 Operating Systems</h4>
+        <div class="theme-grid">
+          <button class="theme-select-btn" data-theme="v7">
+            <span class="theme-icon">🍎</span>
+            <span class="theme-name">v7 iOS</span>
+            <span class="theme-colors">
+              <span class="dot" style="background:#007AFF"></span>
+              <span class="dot" style="background:#5856D6"></span>
+            </span>
           </button>
-          <button class="version-btn" data-version="v8" data-source="iconify" data-prefix="pixelarticons">
-            <span class="version-icon">👾</span>
-            <span class="version-name">v8 Pixel</span>
+          <button class="theme-select-btn" data-theme="v8">
+            <span class="theme-icon">🤖</span>
+            <span class="theme-name">v8 Android</span>
+            <span class="theme-colors">
+              <span class="dot" style="background:#6200EA"></span>
+              <span class="dot" style="background:#03DAC6"></span>
+            </span>
           </button>
-          <button class="version-btn" data-version="v9" data-source="iconify" data-prefix="fa6-solid">
-            <span class="version-icon">◼</span>
-            <span class="version-name">v9 Solid</span>
+        </div>
+      </div>
+
+      <div class="theme-category">
+        <h4>🎭 Aesthetic</h4>
+        <div class="theme-grid">
+          <button class="theme-select-btn" data-theme="v9">
+            <span class="theme-icon">⚡</span>
+            <span class="theme-name">v9 Cyberpunk</span>
+            <span class="theme-colors">
+              <span class="dot" style="background:#00FFFF"></span>
+              <span class="dot" style="background:#FF00FF"></span>
+            </span>
           </button>
-          <button class="version-btn" data-version="v10" data-source="iconify" data-prefix="ph">
-            <span class="version-icon">○</span>
-            <span class="version-name">v10 Line</span>
+          <button class="theme-select-btn" data-theme="v10">
+            <span class="theme-icon">👾</span>
+            <span class="theme-name">v10 Pixel</span>
+            <span class="theme-colors">
+              <span class="dot" style="background:#000"></span>
+              <span class="dot" style="background:#FFF;border:1px solid #333"></span>
+            </span>
           </button>
-          <button class="version-btn" data-version="v11" data-source="iconify" data-prefix="game-icons">
-            <span class="version-icon">🎮</span>
-            <span class="version-name">v11 RPG</span>
+          <button class="theme-select-btn" data-theme="v11">
+            <span class="theme-icon">💻</span>
+            <span class="theme-name">v11 Dark Web</span>
+            <span class="theme-colors">
+              <span class="dot" style="background:#00FF00"></span>
+              <span class="dot" style="background:#000"></span>
+            </span>
           </button>
-          <button class="version-btn" data-version="v12" data-source="iconify" data-prefix="material-symbols">
-            <span class="version-icon">🤖</span>
-            <span class="version-name">v12 Android</span>
+        </div>
+      </div>
+
+      <div class="theme-category">
+        <h4>💼 Professions</h4>
+        <div class="theme-grid">
+          <button class="theme-select-btn" data-theme="v12">
+            <span class="theme-icon">🏥</span>
+            <span class="theme-name">v12 EMS</span>
+            <span class="theme-colors">
+              <span class="dot" style="background:#FFFFFF;border:1px solid #ccc"></span>
+              <span class="dot" style="background:#DC143C"></span>
+            </span>
           </button>
-          <button class="version-btn" data-version="v13" data-source="iconify" data-prefix="ion">
-            <span class="version-icon">🍎</span>
-            <span class="version-name">v13 iOS</span>
+          <button class="theme-select-btn" data-theme="v13">
+            <span class="theme-icon">🎨</span>
+            <span class="theme-name">v13 Street</span>
+            <span class="theme-colors">
+              <span class="dot" style="background:#FF6B35"></span>
+              <span class="dot" style="background:#FFD93D"></span>
+            </span>
           </button>
-          <button class="version-btn" data-version="v14" data-source="iconify" data-prefix="fluent">
-            <span class="version-icon">⊞</span>
-            <span class="version-name">v14 Windows</span>
+          <button class="theme-select-btn" data-theme="v14">
+            <span class="theme-icon">💎</span>
+            <span class="theme-name">v14 Luxury</span>
+            <span class="theme-colors">
+              <span class="dot" style="background:#1A1A1A"></span>
+              <span class="dot" style="background:#FFD700"></span>
+            </span>
           </button>
-          <button class="version-btn" data-version="v15" data-source="iconify" data-prefix="icon-park-twotone">
-            <span class="version-icon">✎</span>
-            <span class="version-name">v15 Hand</span>
+        </div>
+      </div>
+
+      <div class="theme-category">
+        <h4>✨ Fun</h4>
+        <div class="theme-grid">
+          <button class="theme-select-btn" data-theme="v15">
+            <span class="theme-icon">😊</span>
+            <span class="theme-name">v15 3D Emoji</span>
+            <span class="theme-colors">
+              <span class="dot" style="background:#FFB800"></span>
+              <span class="dot" style="background:#FF6B6B"></span>
+            </span>
           </button>
-          <button class="version-btn" data-version="v99" data-source="global">
-            <span class="version-icon">🌍</span>
-            <span class="version-name">Global</span>
-            <span class="badge">100+ Lib</span>
+          <button class="theme-select-btn" data-theme="v16">
+            <span class="theme-icon">✏️</span>
+            <span class="theme-name">v16 Sketch</span>
+            <span class="theme-colors">
+              <span class="dot" style="background:#2C3E50"></span>
+              <span class="dot" style="background:#7F8C8D"></span>
+            </span>
           </button>
         </div>
       </div>
     </div>
 
-
+    <div class="current-theme-info">
+      <div class="info-card">
+        <h3 id="currentThemeName">Drift Racing</h3>
+        <p id="currentThemeDesc">Neon drift theme with orange-pink gradients</p>
+        <div class="color-preview" id="themeColors">
+          <span class="color-dot" style="background: #FF6B35"></span>
+          <span class="color-dot" style="background: #FF2D7A"></span>
+        </div>
+      </div>
+    </div>
 
     <div class="stats-bar">
       <div class="stat-item">
-        <span class="stat-label">Kütüphane:</span>
-        <span class="stat-value" id="currentLibrary">Tabler Icons</span>
+        <span class="stat-label">Theme:</span>
+        <span class="stat-value" id="currentThemeDisplay">v6</span>
       </div>
       <div class="stat-item">
-        <span class="stat-label">İkon:</span>
-        <span class="stat-value" id="iconCount">0</span>
+        <span class="stat-label">Showing:</span>
+        <span class="stat-value" id="visibleCount">38</span>
       </div>
       <div class="stat-item">
-        <span class="stat-label">Favori:</span>
+        <span class="stat-label">Total:</span>
+        <span class="stat-value">418</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Favorites:</span>
         <span class="stat-value" id="favCount">0</span>
       </div>
     </div>
 
     <div class="icons-grid" id="iconsGrid"></div>
-    
-    <div class="load-more" id="loadMoreContainer" style="display: none;">
-      <button class="btn btn-secondary" id="loadMoreBtn">Daha Fazla Yükle</button>
-    </div>
   </div>
 
-  <!-- Comparison Modal -->
+  <!-- Compare Modal -->
   <div class="modal" id="compareModal">
     <div class="modal-content wide">
-      <span class="close-modal" id="closeCompareModal">&times;</span>
-      <h2>İkon Karşılaştırma</h2>
-      <div class="compare-container" id="compareContainer">
+      <span class="close-modal">&times;</span>
+      <h2>Compare Icons</h2>
+      <div class="compare-container">
         <div class="compare-slot" id="compareSlot1">
-          <p>Birinci ikonu seçin</p>
+          <p>Select first icon</p>
         </div>
         <div class="compare-vs">VS</div>
         <div class="compare-slot" id="compareSlot2">
-          <p>İkinci ikonu seçin</p>
+          <p>Select second icon</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Batch Operations Modal -->
+  <!-- Batch Modal -->
   <div class="modal" id="batchModal">
     <div class="modal-content">
-      <span class="close-modal" id="closeBatchModal">&times;</span>
-      <h2>Toplu İşlem</h2>
-      <p id="batchCount">0 ikon seçildi</p>
+      <span class="close-modal">&times;</span>
+      <h2>Batch Operations</h2>
+      <p id="batchCount">0 icons selected</p>
+      <p class="hint">Ctrl+Click to select multiple</p>
       <div class="modal-actions">
-        <button class="btn btn-primary" id="batchExportSvg">📋 SVG İndir</button>
-        <button class="btn btn-secondary" id="batchExportPng">🖼️ PNG İndir</button>
-        <button class="btn btn-secondary" id="batchClear">❌ Temizle</button>
+        <button class="btn btn-primary" id="batchExportSvg">📋 Export SVG</button>
+        <button class="btn btn-secondary" id="batchExportPng">🖼️ Export PNG</button>
+        <button class="btn btn-secondary" id="batchClear">❌ Clear</button>
       </div>
     </div>
   </div>
@@ -159,37 +241,36 @@
   <!-- Collections Modal -->
   <div class="modal" id="collectionsModal">
     <div class="modal-content wide">
-      <span class="close-modal" id="closeCollectionsModal">&times;</span>
-      <h2>Koleksiyonlarım</h2>
+      <span class="close-modal">&times;</span>
+      <h2>My Collections</h2>
       <div class="collections-list" id="collectionsList"></div>
       <div class="create-collection">
-        <input type="text" id="newCollectionName" placeholder="Yeni koleksiyon adı...">
-        <button class="btn btn-primary" id="createCollectionBtn">➕ Oluştur</button>
+        <input type="text" id="newCollectionName" placeholder="New collection name...">
+        <button class="btn btn-primary" id="createCollectionBtn">➕ Create</button>
       </div>
     </div>
   </div>
 
-  <!-- Icon Detail Modal -->
+  <!-- Detail Modal -->
   <div class="modal" id="detailModal">
-    <span class="close-modal" id="closeDetailModal">&times;</span>
+    <span class="close-modal">&times;</span>
     <div class="modal-content">
       <div class="modal-icon-wrapper" id="detailIconWrapper"></div>
       <h2 id="detailTitle"></h2>
       <p id="detailCategory" class="modal-category"></p>
       <div class="modal-meta">
-        <span class="library-tag" id="detailLibrary"></span>
-        <span class="version-tag" id="detailVersion"></span>
+        <span class="theme-tag" id="detailTheme"></span>
       </div>
       <div class="modal-actions">
-        <button class="btn btn-primary" id="copySvgBtn">📋 SVG Kopyala</button>
-        <button class="btn btn-secondary" id="copyCodeBtn">📄 Kod Kopyala</button>
-        <button class="btn btn-secondary" id="downloadPngBtn">🖼️ PNG İndir</button>
-        <button class="btn btn-secondary" id="addToFavBtn">❤️ Favori</button>
-        <button class="btn btn-secondary" id="addToCollectionBtn">📁 Koleksiyona Ekle</button>
-        <button class="btn btn-secondary" id="addToCompareBtn">⚖️ Karşılaştır</button>
+        <button class="btn btn-primary" id="copySvgBtn">📋 Copy SVG</button>
+        <button class="btn btn-secondary" id="copyCodeBtn">📄 Copy Code</button>
+        <button class="btn btn-secondary" id="downloadBtn">💾 Download</button>
+        <button class="btn btn-secondary" id="addToFavBtn">❤️ Favorite</button>
+        <button class="btn btn-secondary" id="addToCompareBtn">⚖️ Compare</button>
+        <button class="btn btn-secondary" id="addToCollectionBtn">📁 Collection</button>
       </div>
       <div class="preview-section">
-        <h3>Önizleme</h3>
+        <h3>Size Preview</h3>
         <div class="preview-grid" id="previewGrid"></div>
       </div>
     </div>
@@ -198,8 +279,8 @@
   <div class="toast" id="toast"></div>
 
   <footer>
-    <p>🚀 Infinite Icon Engine v6 Drift Edition | Pure SVG</p>
-    <p class="footer-stats">38 Custom Icons | Drift Theme | FiveM Ready</p>
+    <p>🚀 Infinite Icon Engine Ultimate | 418 Pure SVG Icons</p>
+    <p class="footer-stats">11 Themes | 38 Icons Each | FiveM Ready | v6-v16 Complete Collection</p>
   </footer>
 
   <script src="js/app.js"></script>
