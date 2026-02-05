@@ -246,6 +246,29 @@ async function getProccessedSVG(url) {
         </defs>
         <rect x="2" y="2" width="60" height="60" rx="8" fill="url(#carbonPattern)" stroke="url(#metalStroke)" stroke-width="2"/>
       `;
+    } else if (currentVersion === 'v7') {
+      // v7 (Badge Edition) - Altın Çerçeveli
+      boxDef = `
+        <defs>
+          <linearGradient id="goldFrame" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#F1C40F"/>
+            <stop offset="50%" stop-color="#FFF"/>
+            <stop offset="100%" stop-color="#B7950B"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="60" height="60" rx="12" fill="#002147" stroke="url(#goldFrame)" stroke-width="3"/>
+      `;
+    } else if (currentVersion === 'v8') {
+      // v8 (Cyber Cop) - Neon Mavi
+      boxDef = `
+        <rect x="2" y="2" width="60" height="60" rx="4" fill="#000" stroke="#00FFFF" stroke-width="2"/>
+        <path d="M2 12h60M2 52h60" stroke="#00FFFF" stroke-width="1" opacity="0.3"/>
+      `;
+    } else if (currentVersion === 'v9') {
+      // v9 (Official) - Minimal Lacivert
+      boxDef = `
+        <rect x="2" y="2" width="60" height="60" rx="14" fill="#002147" stroke="#fff" stroke-width="2"/>
+      `;
     } else {
       // Diğerleri (v2, v3, v4) için yumuşak pastel arka plan
       boxDef = `
