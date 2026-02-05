@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Kawaii FiveM Phone Theme Icons - 36 SVG icons with viewer",
   "scripts": {
-    "dev": "npx serve . -l 3000",
-    "build": "mkdir -p dist && cp -r index.html css js icons dist/ || (mkdir dist && xcopy /E /I /Y index.html dist && xcopy /E /I /Y css dist\\css && xcopy /E /I /Y js dist\\js && xcopy /E /I /Y icons dist\\icons)",
-    "start": "npx serve dist -l 3000"
+    "dev": "npx serve public -l 3000",
+    "build": "echo 'Static files in public folder'",
+    "start": "npx serve public -l 3000"
   },
   "keywords": ["fivem", "icons", "svg", "kawaii", "phone-theme"],
   "author": "Theme Designer",
