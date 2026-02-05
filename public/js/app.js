@@ -36,7 +36,7 @@ const icons = [
 
 let currentIcon = null;
 let currentTheme = 'pastel';
-let currentVersion = 'v6'; // Varsayılan v6 (Drift)
+let currentVersion = 'v2';
 let isBoxed = false;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
   setupSearch();
   setupThemeToggle();
   setupVersionToggle();
-  document.body.dataset.version = currentVersion;
   setupBoxedToggle();
   setupModal();
   updateStats();
@@ -88,7 +87,7 @@ function createIconCard(icon, index) {
 
 function updateStats() {
   document.getElementById('iconCount').textContent = `${icons.length} ikon`;
-  const vText = currentVersion === 'v1' ? 'Flat Versiyon' : 'Drift Spec Versiyon';
+  const vText = currentVersion === 'v1' ? 'Flat Versiyon' : (currentVersion === 'v2' ? 'Jelly Pop Versiyon' : (currentVersion === 'v3' ? 'UwU Bunny Versiyon' : (currentVersion === 'v4' ? 'Soft Cozy Versiyon' : 'Tactical Force Versiyon')));
   const element = document.getElementById('versionInfo');
   if (element) element.textContent = vText;
 }
@@ -100,6 +99,7 @@ function setupBoxedToggle() {
   checkbox.addEventListener('change', (e) => {
     isBoxed = e.target.checked;
     
+    // CSS ile anlık önizleme güncellemesi
     const wrappers = document.querySelectorAll('.icon-wrapper');
     const modalWrapper = document.getElementById('modalIconWrapper');
     
@@ -125,15 +125,15 @@ function setupVersionToggle() {
       btn.classList.add('active');
       
       currentVersion = btn.dataset.version;
-      document.body.dataset.version = currentVersion;
       updateStats();
       
-      // v1 seçilirse boxed modunu kapat
+      // v1 seçilirse boxed modunu kapat (v1 zaten kutulu)
       if (currentVersion === 'v1') {
         const bgCheck = document.getElementById('bgCheck');
         if (bgCheck && bgCheck.checked) {
-          bgCheck.click();
+          bgCheck.click(); // Programatik olarak tıkla
         }
+        // Kutulu seçeneğini gizle/disable et
         document.getElementById('bgControl').style.opacity = '0.5';
         document.getElementById('bgCheck').disabled = true;
       } else {
@@ -199,29 +199,58 @@ async function getProccessedSVG(url) {
   const response = await fetch(url);
   let svgText = await response.text();
   
-  // Sadece v6 için kutu modu aktif (v1 zaten kutulu)
-  if (isBoxed && currentVersion === 'v6') {
+  if (isBoxed && ['v2', 'v3', 'v4', 'v5'].includes(currentVersion)) {
     // SVG içeriğini parse et
     const parser = new DOMParser();
     const doc = parser.parseFromString(svgText, "image/svg+xml");
     const svgEl = doc.querySelector('svg');
     const content = svgEl.innerHTML;
     
-    // v6 (Drift) için Karbon Fiber Doku
-    const boxDef = `
-      <defs>
-        <pattern id="carbonPattern" width="4" height="4" patternUnits="userSpaceOnUse">
-          <rect width="4" height="4" fill="#1a1a1a"/>
-          <path d="M0 4L4 0M-1 1L1 -1M3 5L5 3" stroke="#2a2a2a" stroke-width="1"/>
-        </pattern>
-        <linearGradient id="metalStroke" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#555"/>
-          <stop offset="50%" stop-color="#fff"/>
-          <stop offset="100%" stop-color="#555"/>
-        </linearGradient>
-      </defs>
-      <rect x="2" y="2" width="60" height="60" rx="8" fill="url(#carbonPattern)" stroke="url(#metalStroke)" stroke-width="2"/>
-    `;
+    let boxDef = '';
+    
+    // Versiyona göre arka plan stili
+    if (currentVersion === 'v5') {
+      // v5 (Tactical) için sert, metalik/koyu arka plan
+      boxDef = `
+        <defs>
+          <linearGradient id="tacBox" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#2C3E50"/>
+            <stop offset="100%" stop-color="#000000"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="60" height="60" rx="4" fill="url(#tacBox)" stroke="#7F8C8D" stroke-width="2"/>
+      `;
+    } else if (currentVersion === 'v6') {
+      // v6 (Drift/Realistik) için Karbon Fiber Doku
+      boxDef = `
+        <defs>
+          <pattern id="carbonPattern" width="4" height="4" patternUnits="userSpaceOnUse">
+            <rect width="4" height="4" fill="#1a1a1a"/>
+            <path d="M0 4L4 0M-1 1L1 -1M3 5L5 3" stroke="#2a2a2a" stroke-width="1"/>
+          </pattern>
+          <linearGradient id="metalStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#555"/>
+            <stop offset="50%" stop-color="#fff"/>
+            <stop offset="100%" stop-color="#555"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="60" height="60" rx="8" fill="url(#carbonPattern)" stroke="url(#metalStroke)" stroke-width="2"/>
+      `;
+    } else {
+      // Diğerleri (v2, v3, v4) için yumuşak pastel arka plan
+      boxDef = `
+        <defs>
+          <linearGradient id="bgBoxGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="100%" stop-color="#f0f0f0"/>
+          </linearGradient>
+          <filter id="bgShadow">
+            <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.1"/>
+          </filter>
+        </defs>
+        <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#bgBoxGrad)" stroke="#e6e6e6" stroke-width="1"/>
+      `;
+    }
     
     const newSvg = `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
@@ -278,7 +307,7 @@ function setupModal() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      // İsimlendirme: icon_v6_boxed.svg gibi
+      // İsimlendirme: icon_v2_boxed.svg gibi
       const suffix = isBoxed ? '_boxed' : '';
       a.download = `${currentIcon.name}_${currentVersion}${suffix}.svg`;
       a.click();

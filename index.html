@@ -3,53 +3,241 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FiveM Theme Icons - 6 Versiyon</title>
+  <title>🌌 Infinite Icon Engine | FiveM Universal Icon Picker</title>
   <link rel="stylesheet" href="css/style.css">
+  <!-- Iconify Framework -->
+  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>📱 FiveM Theme Icons</h1>
-      <p>6 Farklı Tema Versiyonu</p>
+      <h1>🌌 Infinite Icon Engine</h1>
+      <p>100+ Kütüphane • 200,000+ İkon • FiveM için Ultimate Icon Picker</p>
+      <div class="engine-badge">⚡ v2026.1 Universal Search Enabled</div>
     </header>
 
     <div class="controls">
       <div class="search-box">
-        <input type="text" id="searchInput" placeholder="🔍 İkon ara...">
+        <input type="text" id="searchInput" placeholder="🔍 Tüm kütüphanelerde ara... (örn: phone, gun, money)">
+        <button id="globalSearchBtn" class="search-btn">🌐 Global Ara</button>
       </div>
-      <div class="version-selector">
-        <button class="version-btn active" data-version="v1">🔹 v1: Flat</button>
-        <button class="version-btn" data-version="v2">🍬 v2: Jelly Pop</button>
-        <button class="version-btn" data-version="v3">🐰 v3: UwU Bunny</button>
-        <button class="version-btn" data-version="v4">☁️ v4: Soft Cozy</button>
-        <button class="version-btn" data-version="v5">👮 v5: Tactical</button>
-        <button class="version-btn" data-version="v6">🏎️ v6: Drift Spec</button>
+      
+      <div class="view-toggle">
+        <button class="view-btn active" data-view="grid">⊞ Grid</button>
+        <button class="view-btn" data-view="list">☰ Liste</button>
       </div>
     </div>
 
-    <div class="stats">
-      <span id="currentVersion">v1: Flat (Klasik)</span>
-      <span id="iconCount">33 ikon</span>
+    <div class="version-tabs">
+      <div class="tab-section">
+        <h3 class="section-title">🎨 Lokal Kütüphaneler</h3>
+        <div class="tab-group">
+          <button class="version-btn active" data-version="local" data-source="local">
+            <span class="version-icon">🏠</span>
+            <span class="version-name">Lokal</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="tab-section">
+        <h3 class="section-title">⚡ Iconify Koleksiyonları (v7-v15)</h3>
+        <div class="tab-group">
+          <button class="version-btn" data-version="v7" data-source="iconify" data-prefix="lucide">
+            <span class="version-icon">⚡</span>
+            <span class="version-name">v7 Cyber</span>
+          </button>
+          <button class="version-btn" data-version="v8" data-source="iconify" data-prefix="pixelarticons">
+            <span class="version-icon">👾</span>
+            <span class="version-name">v8 Pixel</span>
+          </button>
+          <button class="version-btn" data-version="v9" data-source="iconify" data-prefix="fa6-solid">
+            <span class="version-icon">◼</span>
+            <span class="version-name">v9 Solid</span>
+          </button>
+          <button class="version-btn" data-version="v10" data-source="iconify" data-prefix="ph">
+            <span class="version-icon">○</span>
+            <span class="version-name">v10 Line</span>
+          </button>
+          <button class="version-btn" data-version="v11" data-source="iconify" data-prefix="game-icons">
+            <span class="version-icon">🎮</span>
+            <span class="version-name">v11 RPG</span>
+          </button>
+          <button class="version-btn" data-version="v12" data-source="iconify" data-prefix="material-symbols">
+            <span class="version-icon">🤖</span>
+            <span class="version-name">v12 Android</span>
+          </button>
+          <button class="version-btn" data-version="v13" data-source="iconify" data-prefix="ion">
+            <span class="version-icon">🍎</span>
+            <span class="version-name">v13 iOS</span>
+          </button>
+          <button class="version-btn" data-version="v14" data-source="iconify" data-prefix="fluent">
+            <span class="version-icon">⊞</span>
+            <span class="version-name">v14 Windows</span>
+          </button>
+          <button class="version-btn" data-version="v15" data-source="iconify" data-prefix="icon-park-twotone">
+            <span class="version-icon">✎</span>
+            <span class="version-name">v15 Hand</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="tab-section">
+        <h3 class="section-title">🎭 Genişletilmiş Koleksiyonlar (v16-v30)</h3>
+        <div class="tab-group">
+          <button class="version-btn" data-version="v16" data-source="iconify" data-prefix="solar">
+            <span class="version-icon">☀</span>
+            <span class="version-name">v16 Neon</span>
+          </button>
+          <button class="version-btn" data-version="v17" data-source="iconify" data-prefix="uim">
+            <span class="version-icon">◐</span>
+            <span class="version-name">v17 Duotone</span>
+          </button>
+          <button class="version-btn" data-version="v18" data-source="iconify" data-prefix="carbon">
+            <span class="version-icon">◈</span>
+            <span class="version-name">v18 IBM</span>
+          </button>
+          <button class="version-btn" data-version="v19" data-source="iconify" data-prefix="noto">
+            <span class="version-icon">😊</span>
+            <span class="version-name">v19 Emoji</span>
+          </button>
+          <button class="version-btn" data-version="v20" data-source="iconify" data-prefix="pepicons-pencil">
+            <span class="version-icon">✏</span>
+            <span class="version-name">v20 Sketch</span>
+          </button>
+          <button class="version-btn" data-version="v21" data-source="iconify" data-prefix="zondicons">
+            <span class="version-icon">■</span>
+            <span class="version-name">v21 Heavy</span>
+          </button>
+          <button class="version-btn" data-version="v22" data-source="iconify" data-prefix="arcticons">
+            <span class="version-icon">🎌</span>
+            <span class="version-name">v22 Anime</span>
+          </button>
+          <button class="version-btn" data-version="v23" data-source="iconify" data-prefix="tabler">
+            <span class="version-icon">▼</span>
+            <span class="version-name">v23 Graffiti</span>
+          </button>
+          <button class="version-btn" data-version="v24" data-source="iconify" data-prefix="cryptocurrency">
+            <span class="version-icon">₿</span>
+            <span class="version-name">v24 Crypto</span>
+          </button>
+          <button class="version-btn" data-version="v25" data-source="iconify" data-prefix="medical-icon">
+            <span class="version-icon">⚕</span>
+            <span class="version-name">v25 Medical</span>
+          </button>
+          <button class="version-btn" data-version="v26" data-source="iconify" data-prefix="maki">
+            <span class="version-icon">🗺</span>
+            <span class="version-name">v26 Maps</span>
+          </button>
+          <button class="version-btn" data-version="v27" data-source="iconify" data-prefix="meteocons">
+            <span class="version-icon">🌤</span>
+            <span class="version-name">v27 Weather</span>
+          </button>
+          <button class="version-btn" data-version="v28" data-source="iconify" data-prefix="circle-flags">
+            <span class="version-icon">🏳</span>
+            <span class="version-name">v28 Flags</span>
+          </button>
+          <button class="version-btn" data-version="v29" data-source="iconify" data-prefix="simple-icons">
+            <span class="version-icon">🏢</span>
+            <span class="version-name">v29 Brands</span>
+          </button>
+          <button class="version-btn" data-version="v30" data-source="iconify" data-prefix="entypo">
+            <span class="version-icon">📊</span>
+            <span class="version-name">v30 Corporate</span>
+          </button>
+          <button class="version-btn" data-version="v31" data-source="iconify" data-prefix="icon-park-outline">
+            <span class="version-icon">🛋</span>
+            <span class="version-name">v31 Furniture</span>
+          </button>
+          <button class="version-btn" data-version="v32" data-source="iconify" data-prefix="vscode-icons">
+            <span class="version-icon">🔧</span>
+            <span class="version-name">v32 Tools</span>
+          </button>
+          <button class="version-btn" data-version="v33" data-source="iconify" data-prefix="twemoji">
+            <span class="version-icon">🐦</span>
+            <span class="version-name">v33 Twemoji</span>
+          </button>
+          <button class="version-btn" data-version="v34" data-source="iconify" data-prefix="fluent-emoji">
+            <span class="version-icon">🎭</span>
+            <span class="version-name">v34 3D Emoji</span>
+          </button>
+          <button class="version-btn" data-version="v35" data-source="iconify" data-prefix="win95">
+            <span class="version-icon">💾</span>
+            <span class="version-name">v35 Retro</span>
+          </button>
+          <button class="version-btn" data-version="v36" data-source="iconify" data-prefix="gridicons">
+            <span class="version-icon">⊞</span>
+            <span class="version-name">v36 Abstract</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="tab-section highlight">
+        <h3 class="section-title">🌐 Özel Modlar</h3>
+        <div class="tab-group">
+          <button class="version-btn special" data-version="v99" data-source="global" id="globalModeBtn">
+            <span class="version-icon">🌍</span>
+            <span class="version-name">v99 GLOBAL</span>
+            <span class="badge">100+ Lib</span>
+          </button>
+          <button class="version-btn special mix" data-version="v98" data-source="mixed">
+            <span class="version-icon">🎲</span>
+            <span class="version-name">v98 MIX</span>
+            <span class="badge">Random</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-label">Aktif Kütüphane:</span>
+        <span class="stat-value" id="currentLibrary">Lokal</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">İkon Sayısı:</span>
+        <span class="stat-value" id="iconCount">36</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Kaynak:</span>
+        <span class="stat-value" id="sourceType">Local SVG</span>
+      </div>
     </div>
 
     <div class="icons-grid" id="iconsGrid"></div>
+    
+    <div class="load-more" id="loadMoreContainer" style="display: none;">
+      <button class="btn btn-secondary" id="loadMoreBtn">Daha Fazla Yükle</button>
+    </div>
   </div>
 
   <div class="modal" id="modal">
     <span class="close-modal" id="closeModal">&times;</span>
     <div class="modal-content">
-      <img class="modal-icon" id="modalIcon" src="" alt="">
+      <div class="modal-icon-wrapper" id="modalIconWrapper">
+        <!-- Icon will be rendered here -->
+      </div>
       <h2 id="modalTitle"></h2>
       <p id="modalCategory" class="modal-category"></p>
+      <div class="modal-meta">
+        <span class="library-tag" id="modalLibrary"></span>
+        <span class="version-tag" id="modalVersion"></span>
+      </div>
       <div class="modal-actions">
         <button class="btn btn-primary" id="copyBtn">📋 SVG Kopyala</button>
+        <button class="btn btn-secondary" id="copyCodeBtn">📄 Kod Kopyala</button>
         <button class="btn btn-secondary" id="downloadBtn">💾 İndir</button>
+      </div>
+      <div class="modal-code" id="modalCodeSection" style="display: none;">
+        <pre><code id="modalCode"></code></pre>
       </div>
     </div>
   </div>
 
+  <div class="toast" id="toast"></div>
+
   <footer>
-    <p>Made for FiveM Community</p>
+    <p>🚀 Infinite Icon Engine v2026.1 | Powered by Iconify API</p>
+    <p class="footer-stats">100+ Kütüphane • 200,000+ İkon • FiveM Ready</p>
   </footer>
 
   <script src="js/app.js"></script>
