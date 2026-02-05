@@ -201,7 +201,7 @@ async function getProccessedSVG(url) {
   const response = await fetch(url);
   let svgText = await response.text();
   
-  if (isBoxed && ['v2', 'v3', 'v4', 'v5'].includes(currentVersion)) {
+  if (isBoxed && ['v2', 'v3', 'v4', 'v5', 'v6', 'v7', 'v8', 'v9', 'v10'].includes(currentVersion)) {
     // SVG içeriğini parse et
     const parser = new DOMParser();
     const doc = parser.parseFromString(svgText, "image/svg+xml");
@@ -210,9 +210,8 @@ async function getProccessedSVG(url) {
     
     let boxDef = '';
     
-    // Versiyona göre arka plan stili
     if (currentVersion === 'v5') {
-      // v5 (Tactical Elite) için Fırçalanmış Metal ve Vida Detaylı Kutu
+      // v5 (Tactical Elite)
       boxDef = `
         <defs>
           <linearGradient id="tacBox" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -233,7 +232,7 @@ async function getProccessedSVG(url) {
         <circle cx="58" cy="58" r="1.5" fill="#6B7280"/>
       `;
     } else if (currentVersion === 'v6') {
-      // v6 (Drift/Realistik) için Karbon Fiber Doku
+      // v6 (Drift/Realistik)
       boxDef = `
         <defs>
           <pattern id="carbonPattern" width="4" height="4" patternUnits="userSpaceOnUse">
@@ -249,7 +248,7 @@ async function getProccessedSVG(url) {
         <rect x="2" y="2" width="60" height="60" rx="8" fill="url(#carbonPattern)" stroke="url(#metalStroke)" stroke-width="2"/>
       `;
     } else if (currentVersion === 'v7') {
-      // v7 (Badge Edition) - Altın Çerçeveli
+      // v7 (Badge)
       boxDef = `
         <defs>
           <linearGradient id="goldFrame" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -261,18 +260,23 @@ async function getProccessedSVG(url) {
         <rect x="2" y="2" width="60" height="60" rx="12" fill="#002147" stroke="url(#goldFrame)" stroke-width="3"/>
       `;
     } else if (currentVersion === 'v8') {
-      // v8 (Cyber Cop) - Neon Mavi
+      // v8 (Cyber)
       boxDef = `
         <rect x="2" y="2" width="60" height="60" rx="4" fill="#000" stroke="#00FFFF" stroke-width="2"/>
         <path d="M2 12h60M2 52h60" stroke="#00FFFF" stroke-width="1" opacity="0.3"/>
       `;
     } else if (currentVersion === 'v9') {
-      // v9 (Official) - Minimal Lacivert
+      // v9 (Official)
       boxDef = `
         <rect x="2" y="2" width="60" height="60" rx="14" fill="#002147" stroke="#fff" stroke-width="2"/>
       `;
+    } else if (currentVersion === 'v10') {
+      // v10 (Pixel)
+      boxDef = `
+        <rect x="2" y="2" width="60" height="60" fill="#9bbc0f" stroke="#0f380f" stroke-width="4"/>
+      `;
     } else {
-      // Diğerleri (v2, v3, v4) için yumuşak pastel arka plan
+      // Diğerleri
       boxDef = `
         <defs>
           <linearGradient id="bgBoxGrad" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -286,6 +290,19 @@ async function getProccessedSVG(url) {
         <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#bgBoxGrad)" stroke="#e6e6e6" stroke-width="1"/>
       `;
     }
+    
+    const newSvg = `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  ${boxDef}
+  <g transform="translate(7, 7) scale(0.78)">
+    ${content}
+  </g>
+</svg>`;
+    return newSvg;
+  }
+  
+  return svgText;
+}
     
     const newSvg = `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
