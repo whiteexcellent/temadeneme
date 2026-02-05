@@ -220,6 +220,22 @@ async function getProccessedSVG(url) {
         </defs>
         <rect x="2" y="2" width="60" height="60" rx="4" fill="url(#tacBox)" stroke="#7F8C8D" stroke-width="2"/>
       `;
+    } else if (currentVersion === 'v6') {
+      // v6 (Drift/Realistik) için Karbon Fiber Doku
+      boxDef = `
+        <defs>
+          <pattern id="carbonPattern" width="4" height="4" patternUnits="userSpaceOnUse">
+            <rect width="4" height="4" fill="#1a1a1a"/>
+            <path d="M0 4L4 0M-1 1L1 -1M3 5L5 3" stroke="#2a2a2a" stroke-width="1"/>
+          </pattern>
+          <linearGradient id="metalStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#555"/>
+            <stop offset="50%" stop-color="#fff"/>
+            <stop offset="100%" stop-color="#555"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="60" height="60" rx="8" fill="url(#carbonPattern)" stroke="url(#metalStroke)" stroke-width="2"/>
+      `;
     } else {
       // Diğerleri (v2, v3, v4) için yumuşak pastel arka plan
       boxDef = `
