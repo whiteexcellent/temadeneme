@@ -87,7 +87,7 @@ function createIconCard(icon, index) {
 
 function updateStats() {
   document.getElementById('iconCount').textContent = `${icons.length} ikon`;
-  const vText = currentVersion === 'v1' ? 'Flat Versiyon' : (currentVersion === 'v2' ? 'Jelly Pop Versiyon' : (currentVersion === 'v3' ? 'UwU Bunny Versiyon' : 'Soft Cozy Versiyon'));
+  const vText = currentVersion === 'v1' ? 'Flat Versiyon' : (currentVersion === 'v2' ? 'Jelly Pop Versiyon' : (currentVersion === 'v3' ? 'UwU Bunny Versiyon' : (currentVersion === 'v4' ? 'Soft Cozy Versiyon' : 'Tactical Force Versiyon')));
   const element = document.getElementById('versionInfo');
   if (element) element.textContent = vText;
 }
@@ -199,27 +199,46 @@ async function getProccessedSVG(url) {
   const response = await fetch(url);
   let svgText = await response.text();
   
-  if (isBoxed && (currentVersion === 'v2' || currentVersion === 'v3' || currentVersion === 'v4')) {
+  if (isBoxed && ['v2', 'v3', 'v4', 'v5'].includes(currentVersion)) {
     // SVG içeriğini parse et
     const parser = new DOMParser();
     const doc = parser.parseFromString(svgText, "image/svg+xml");
     const svgEl = doc.querySelector('svg');
     const content = svgEl.innerHTML;
     
-    // Yeni SVG oluştur (Arka planlı)
-    // Box rengi temaya uygun pastel beyaz
+    let boxDef = '';
+    
+    // Versiyona göre arka plan stili
+    if (currentVersion === 'v5') {
+      // v5 (Tactical) için sert, metalik/koyu arka plan
+      boxDef = `
+        <defs>
+          <linearGradient id="tacBox" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#2C3E50"/>
+            <stop offset="100%" stop-color="#000000"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="60" height="60" rx="4" fill="url(#tacBox)" stroke="#7F8C8D" stroke-width="2"/>
+      `;
+    } else {
+      // Diğerleri (v2, v3, v4) için yumuşak pastel arka plan
+      boxDef = `
+        <defs>
+          <linearGradient id="bgBoxGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="100%" stop-color="#f0f0f0"/>
+          </linearGradient>
+          <filter id="bgShadow">
+            <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.1"/>
+          </filter>
+        </defs>
+        <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#bgBoxGrad)" stroke="#e6e6e6" stroke-width="1"/>
+      `;
+    }
+    
     const newSvg = `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <defs>
-    <linearGradient id="bgBoxGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="100%" stop-color="#f0f0f0"/>
-    </linearGradient>
-    <filter id="bgShadow">
-      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.1"/>
-    </filter>
-  </defs>
-  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#bgBoxGrad)" stroke="#e6e6e6" stroke-width="1"/>
+  ${boxDef}
   <g transform="translate(7, 7) scale(0.78)">
     ${content}
   </g>
