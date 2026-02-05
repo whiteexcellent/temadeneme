@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="driftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35"/>
+      <stop offset="100%" style="stop-color:#FF2D7A"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#driftGrad)" opacity="0.15"/>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="none" stroke="url(#driftGrad)" stroke-width="2"/>
+  
+  <!-- Car body -->
+  <path d="M8 36h48l-4-12H12l-4 12z" fill="none" stroke="url(#driftGrad)" stroke-width="2.5"/>
+  <path d="M6 36v8a4 4 0 004 4h44a4 4 0 004-4v-8" fill="none" stroke="url(#driftGrad)" stroke-width="2.5"/>
+  
+  <!-- Windows -->
+  <path d="M14 28h36l-2-6H16l-2 6z" fill="none" stroke="url(#driftGrad)" stroke-width="1.5"/>
+  
+  <!-- Wheels with motion blur -->
+  <circle cx="16" cy="44" r="4" fill="none" stroke="url(#driftGrad)" stroke-width="2"/>
+  <circle cx="48" cy="44" r="4" fill="none" stroke="url(#driftGrad)" stroke-width="2"/>
+  
+  <!-- Drift lines -->
+  <path d="M4 48l-4 2M4 52l-4 0M60 48l4 2M60 52l4 0" stroke="url(#driftGrad)" stroke-width="1.5" opacity="0.6"/>
+  
+  <!-- Smoke -->
+  <path d="M8 52c-4 2-4 6 0 8M56 52c4 2 4 6 0 8" fill="none" stroke="url(#driftGrad)" stroke-width="1.5" opacity="0.4"/>
+</svg>

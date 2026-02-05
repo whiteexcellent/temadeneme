@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="driftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35"/>
+      <stop offset="100%" style="stop-color:#FF2D7A"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#driftGrad)" opacity="0.15"/>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="none" stroke="url(#driftGrad)" stroke-width="2"/>
+  
+  <!-- Gamepad body -->
+  <path d="M12 28c0-6 6-10 12-10h16c6 0 12 4 12 10v12c0 6-6 10-12 10H24c-6 0-12-4-12-10V28z" 
+        fill="none" stroke="url(#driftGrad)" stroke-width="2.5"/>
+  
+  <!-- D-pad -->
+  <path d="M20 32h4v-4h4v4h4v4h-4v4h-4v-4h-4v-4z" fill="none" stroke="url(#driftGrad)" stroke-width="2"/>
+  
+  <!-- Action buttons -->
+  <circle cx="44" cy="30" r="2" fill="url(#driftGrad)"/>
+  <circle cx="48" cy="34" r="2" fill="url(#driftGrad)"/>
+  <circle cx="40" cy="34" r="2" fill="url(#driftGrad)"/>
+  <circle cx="44" cy="38" r="2" fill="url(#driftGrad)"/>
+  
+  <!-- Turbo lines -->
+  <path d="M52 14l4-2M52 18l4 0" stroke="url(#driftGrad)" stroke-width="1.5" opacity="0.5"/>
+</svg>

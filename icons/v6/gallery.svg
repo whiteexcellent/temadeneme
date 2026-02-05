@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="driftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35"/>
+      <stop offset="100%" style="stop-color:#FF2D7A"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#driftGrad)" opacity="0.15"/>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="none" stroke="url(#driftGrad)" stroke-width="2"/>
+  
+  <!-- Mountain/landscape -->
+  <path d="M8 48l16-20 8 10 12-16 12 26H8z" fill="none" stroke="url(#driftGrad)" stroke-width="2.5" stroke-linejoin="round"/>
+  
+  <!-- Sun -->
+  <circle cx="48" cy="20" r="6" fill="none" stroke="url(#driftGrad)" stroke-width="2"/>
+  
+  <!-- Gallery frame -->
+  <rect x="8" y="12" width="48" height="40" rx="4" fill="none" stroke="url(#driftGrad)" stroke-width="2" opacity="0.3"/>
+</svg>

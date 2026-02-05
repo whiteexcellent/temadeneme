@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="driftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35"/>
+      <stop offset="100%" style="stop-color:#FF2D7A"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#driftGrad)" opacity="0.15"/>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="none" stroke="url(#driftGrad)" stroke-width="2"/>
+  
+  <!-- Wrench -->
+  <path d="M18 16l6 6-4 4 12 12 4-4 6 6a8 8 0 11-12-12l-12-12z" 
+        fill="none" stroke="url(#driftGrad)" stroke-width="2.5" stroke-linejoin="round"/>
+  
+  <!-- Screwdriver -->
+  <path d="M46 12l-14 14 4 4 14-14-4-4z" fill="none" stroke="url(#driftGrad)" stroke-width="2.5"/>
+  
+  <!-- Gear hint -->
+  <circle cx="48" cy="48" r="6" fill="none" stroke="url(#driftGrad)" stroke-width="1.5" opacity="0.5"/>
+</svg>

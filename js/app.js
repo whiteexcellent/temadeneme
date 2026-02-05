@@ -1,68 +1,52 @@
 /**
  * 🌌 INFINITE ICON ENGINE v6 - DRIFT EDITION
- * Tabler Icons + Advanced Features
+ * Pure SVG Version
  */
 
 // ==========================================
-// 📚 CONFIGURATION
+// 📚 v6 DRIFT ICONS (Local SVG)
 // ==========================================
 
-const CONFIG = {
-  v6: { prefix: 'tabler', name: 'Tabler Icons', total: 5984 },
-  v7: { prefix: 'lucide', name: 'Lucide' },
-  v8: { prefix: 'pixelarticons', name: 'Pixel Art' },
-  v9: { prefix: 'fa6-solid', name: 'FontAwesome' },
-  v10: { prefix: 'ph', name: 'Phosphor' },
-  v11: { prefix: 'game-icons', name: 'Game Icons' },
-  v12: { prefix: 'material-symbols', name: 'Material' },
-  v13: { prefix: 'ion', name: 'Ionicons' },
-  v14: { prefix: 'fluent', name: 'Fluent' },
-  v15: { prefix: 'icon-park-twotone', name: 'IconPark' },
-  v99: { name: 'Global Search', source: 'global' }
-};
-
-// v6 Default Icons - Tabler için önemli ikonlar
-const V6_DEFAULT_ICONS = [
-  { name: 'phone', icon: 'device-mobile', category: 'communication' },
-  { name: 'messages', icon: 'message-circle', category: 'communication' },
-  { name: 'contacts', icon: 'address-book', category: 'communication' },
-  { name: 'email', icon: 'mail', category: 'communication' },
-  { name: 'camera', icon: 'camera', category: 'media' },
-  { name: 'gallery', icon: 'photo', category: 'media' },
-  { name: 'video', icon: 'video', category: 'media' },
-  { name: 'music', icon: 'music', category: 'media' },
-  { name: 'spotify', icon: 'brand-spotify', category: 'media' },
-  { name: 'maps', icon: 'map', category: 'tools' },
-  { name: 'gps', icon: 'location', category: 'tools' },
-  { name: 'calendar', icon: 'calendar', category: 'tools' },
-  { name: 'clock', icon: 'clock', category: 'tools' },
-  { name: 'calculator', icon: 'calculator', category: 'tools' },
-  { name: 'flashlight', icon: 'bulb', category: 'tools' },
-  { name: 'weather', icon: 'sun', category: 'tools' },
-  { name: 'settings', icon: 'settings', category: 'system' },
-  { name: 'notifications', icon: 'bell', category: 'system' },
-  { name: 'games', icon: 'device-gamepad', category: 'entertainment' },
-  { name: 'casino', icon: 'dice', category: 'entertainment' },
-  { name: 'bank', icon: 'building-bank', category: 'finance' },
-  { name: 'taxi', icon: 'taxi', category: 'services' },
-  { name: 'home', icon: 'home', category: 'services' },
-  { name: 'food', icon: 'fork-knife', category: 'services' },
-  { name: 'electrician', icon: 'bolt', category: 'services' },
-  { name: 'mechanic', icon: 'tool', category: 'services' },
-  { name: 'market', icon: 'shopping-cart', category: 'shopping' },
-  { name: 'shop247', icon: '24-hours', category: 'shopping' },
-  { name: 'business', icon: 'briefcase', category: 'work' },
-  { name: 'browser', icon: 'world', category: 'internet' },
-  { name: 'hospital', icon: 'heart-plus', category: 'emergency' },
-  { name: 'police', icon: 'shield', category: 'emergency' },
-  { name: 'gang', icon: 'users-group', category: 'special' },
-  // Drift/Gaming extras
-  { name: 'drift', icon: 'car', category: 'racing' },
-  { name: 'turbo', icon: 'gauge', category: 'racing' },
-  { name: 'nitro', icon: 'flame', category: 'racing' },
-  { name: 'tuning', icon: 'adjustments', category: 'racing' },
-  { name: 'race', icon: 'flag', category: 'racing' },
-  { name: 'speed', icon: 'trending-up', category: 'racing' }
+const V6_ICONS = [
+  { name: 'phone', file: 'icons/v6/phone.svg', category: 'communication' },
+  { name: 'messages', file: 'icons/v6/messages.svg', category: 'communication' },
+  { name: 'contacts', file: 'icons/v6/contacts.svg', category: 'communication' },
+  { name: 'email', file: 'icons/v6/email.svg', category: 'communication' },
+  { name: 'camera', file: 'icons/v6/camera.svg', category: 'media' },
+  { name: 'gallery', file: 'icons/v6/gallery.svg', category: 'media' },
+  { name: 'video', file: 'icons/v6/video.svg', category: 'media' },
+  { name: 'music', file: 'icons/v6/music.svg', category: 'media' },
+  { name: 'maps', file: 'icons/v6/maps.svg', category: 'tools' },
+  { name: 'gps', file: 'icons/v6/gps.svg', category: 'tools' },
+  { name: 'calendar', file: 'icons/v6/calendar.svg', category: 'tools' },
+  { name: 'clock', file: 'icons/v6/clock.svg', category: 'tools' },
+  { name: 'calculator', file: 'icons/v6/calculator.svg', category: 'tools' },
+  { name: 'flashlight', file: 'icons/v6/flashlight.svg', category: 'tools' },
+  { name: 'weather', file: 'icons/v6/weather.svg', category: 'tools' },
+  { name: 'settings', file: 'icons/v6/settings.svg', category: 'system' },
+  { name: 'notifications', file: 'icons/v6/notifications.svg', category: 'system' },
+  { name: 'games', file: 'icons/v6/games.svg', category: 'entertainment' },
+  { name: 'casino', file: 'icons/v6/casino.svg', category: 'entertainment' },
+  { name: 'bank', file: 'icons/v6/bank.svg', category: 'finance' },
+  { name: 'taxi', file: 'icons/v6/taxi.svg', category: 'services' },
+  { name: 'home', file: 'icons/v6/home.svg', category: 'services' },
+  { name: 'food', file: 'icons/v6/food.svg', category: 'services' },
+  { name: 'electrician', file: 'icons/v6/electrician.svg', category: 'services' },
+  { name: 'mechanic', file: 'icons/v6/mechanic.svg', category: 'services' },
+  { name: 'market', file: 'icons/v6/market.svg', category: 'shopping' },
+  { name: 'shop247', file: 'icons/v6/shop247.svg', category: 'shopping' },
+  { name: 'business', file: 'icons/v6/business.svg', category: 'work' },
+  { name: 'browser', file: 'icons/v6/browser.svg', category: 'internet' },
+  { name: 'hospital', file: 'icons/v6/hospital.svg', category: 'emergency' },
+  { name: 'police', file: 'icons/v6/police.svg', category: 'emergency' },
+  { name: 'gang', file: 'icons/v6/gang.svg', category: 'special' },
+  // Drift specials
+  { name: 'drift', file: 'icons/v6/drift.svg', category: 'racing' },
+  { name: 'turbo', file: 'icons/v6/turbo.svg', category: 'racing' },
+  { name: 'nitro', file: 'icons/v6/nitro.svg', category: 'racing' },
+  { name: 'tuning', file: 'icons/v6/tuning.svg', category: 'racing' },
+  { name: 'race', file: 'icons/v6/race.svg', category: 'racing' },
+  { name: 'speed', file: 'icons/v6/speed.svg', category: 'racing' }
 ];
 
 // ==========================================
@@ -70,17 +54,12 @@ const V6_DEFAULT_ICONS = [
 // ==========================================
 
 const state = {
-  currentVersion: 'v6',
-  icons: [],
-  favorites: JSON.parse(localStorage.getItem('iconFavorites') || '[]'),
-  collections: JSON.parse(localStorage.getItem('iconCollections') || '[]'),
+  icons: V6_ICONS,
+  favorites: JSON.parse(localStorage.getItem('v6Favorites') || '[]'),
+  collections: JSON.parse(localStorage.getItem('v6Collections') || '[]'),
   compare: { slot1: null, slot2: null },
   batch: [],
-  customization: {
-    stroke: 2,
-    color: '#00d4ff',
-    size: 48
-  },
+  currentIcon: null,
   view: 'grid',
   theme: 'dark'
 };
@@ -93,61 +72,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initApp();
 });
 
-async function initApp() {
-  await loadV6Icons();
+function initApp() {
+  renderIcons(state.icons);
   setupEventListeners();
-  setupCustomization();
   updateStats();
-  showToast('🌌 v6 Drift Edition başlatıldı!');
-}
-
-// ==========================================
-// 📱 LOAD ICONS
-// ==========================================
-
-async function loadV6Icons() {
-  showToast('📚 Tabler Icons yükleniyor...');
-  
-  try {
-    // Fetch popular Tabler icons
-    const response = await fetch('https://api.iconify.design/collection?prefix=tabler');
-    const data = await response.json();
-    
-    if (data.icons) {
-      const iconNames = Object.keys(data.icons);
-      
-      // Map default icons
-      state.icons = V6_DEFAULT_ICONS.map(item => ({
-        name: item.name,
-        icon: item.icon,
-        category: item.category,
-        prefix: 'tabler',
-        source: 'iconify'
-      }));
-      
-      // Add more icons from collection (up to 100)
-      let count = 0;
-      for (const iconName of iconNames) {
-        if (count >= 100) break;
-        if (!V6_DEFAULT_ICONS.find(i => i.icon === iconName)) {
-          state.icons.push({
-            name: iconName,
-            icon: iconName,
-            category: 'general',
-            prefix: 'tabler',
-            source: 'iconify'
-          });
-          count++;
-        }
-      }
-      
-      renderIcons(state.icons);
-      showToast(`✅ ${state.icons.length} ikon yüklendi`);
-    }
-  } catch (error) {
-    console.error('Error loading icons:', error);
-    showToast('❌ İkonlar yüklenemedi', 'error');
-  }
+  showToast('🏎️ v6 Drift Edition - 38 Pure SVG Icons');
 }
 
 // ==========================================
@@ -168,14 +97,6 @@ function renderIcons(iconsToRender) {
     grid.appendChild(card);
   });
   
-  // Apply customization
-  applyCustomization();
-  
-  // Scan Iconify
-  if (window.Iconify) {
-    window.Iconify.scan();
-  }
-  
   updateStats();
 }
 
@@ -193,11 +114,8 @@ function createIconCard(icon, index) {
   
   card.innerHTML = `
     <div class="icon-wrapper">
-      <span class="iconify" 
-            data-icon="tabler:${icon.icon}" 
-            data-width="${state.customization.size}" 
-            data-height="${state.customization.size}"
-            style="color: ${state.customization.color};"></span>
+      <img src="${icon.file}" alt="${icon.name}" loading="lazy" 
+           onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect fill=%22%23ff6b35%22 width=%2264%22 height=%2264%22 rx=%2216%22/><text x=%2232%22 y=%2236%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22>?</text></svg>'">
     </div>
     <div class="icon-name">${icon.name}</div>
     <div class="icon-category">${icon.category}</div>
@@ -215,59 +133,18 @@ function createIconCard(icon, index) {
 }
 
 // ==========================================
-// ⚙️ CUSTOMIZATION
-// ==========================================
-
-function setupCustomization() {
-  const strokeSlider = document.getElementById('strokeSlider');
-  const colorPicker = document.getElementById('colorPicker');
-  const sizeSelector = document.getElementById('sizeSelector');
-  
-  strokeSlider.addEventListener('input', (e) => {
-    state.customization.stroke = e.target.value;
-    document.getElementById('strokeValue').textContent = e.target.value + 'px';
-    applyCustomization();
-  });
-  
-  colorPicker.addEventListener('input', (e) => {
-    state.customization.color = e.target.value;
-    applyCustomization();
-  });
-  
-  sizeSelector.addEventListener('change', (e) => {
-    state.customization.size = e.target.value;
-    renderIcons(state.icons);
-  });
-}
-
-function applyCustomization() {
-  const iconifyElements = document.querySelectorAll('.iconify');
-  iconifyElements.forEach(el => {
-    el.style.strokeWidth = state.customization.stroke;
-    el.style.color = state.customization.color;
-  });
-}
-
-// ==========================================
 // 🔘 EVENT LISTENERS
 // ==========================================
 
 function setupEventListeners() {
-  // Version buttons
-  document.querySelectorAll('.version-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.version-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      
-      const version = btn.dataset.version;
-      if (version === 'v6') {
-        loadV6Icons();
-      } else if (version === 'v99') {
-        enableGlobalMode();
-      } else {
-        loadOtherVersion(version, btn.dataset.prefix);
-      }
-    });
+  // Search
+  document.getElementById('searchInput').addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase();
+    const filtered = state.icons.filter(icon => 
+      icon.name.toLowerCase().includes(query) ||
+      icon.category.toLowerCase().includes(query)
+    );
+    renderIcons(filtered);
   });
   
   // View toggle
@@ -277,6 +154,7 @@ function setupEventListeners() {
       btn.classList.add('active');
       state.view = btn.dataset.view;
       document.getElementById('iconsGrid').className = `icons-grid ${state.view}`;
+      renderIcons(state.icons);
     });
   });
   
@@ -290,16 +168,6 @@ function setupEventListeners() {
     });
   });
   
-  // Search
-  document.getElementById('searchInput').addEventListener('input', (e) => {
-    const query = e.target.value.toLowerCase();
-    const filtered = state.icons.filter(icon => 
-      icon.name.toLowerCase().includes(query) ||
-      icon.category.toLowerCase().includes(query)
-    );
-    renderIcons(filtered);
-  });
-  
   // Feature buttons
   document.getElementById('favoritesBtn').addEventListener('click', showFavorites);
   document.getElementById('compareBtn').addEventListener('click', openCompareModal);
@@ -311,12 +179,20 @@ function setupEventListeners() {
     btn.addEventListener('click', closeAllModals);
   });
   
+  // Modal actions
+  document.getElementById('copySvgBtn')?.addEventListener('click', copySvg);
+  document.getElementById('copyCodeBtn')?.addEventListener('click', copyCode);
+  document.getElementById('downloadPngBtn')?.addEventListener('click', downloadPng);
+  document.getElementById('addToFavBtn')?.addEventListener('click', () => state.currentIcon && toggleFavorite(state.currentIcon));
+  document.getElementById('addToCollectionBtn')?.addEventListener('click', () => state.currentIcon && addToCollection(state.currentIcon));
+  document.getElementById('addToCompareBtn')?.addEventListener('click', () => state.currentIcon && addToCompare(state.currentIcon));
+  
   // Batch actions
   document.getElementById('batchExportSvg')?.addEventListener('click', batchExportSvg);
   document.getElementById('batchExportPng')?.addEventListener('click', batchExportPng);
   document.getElementById('batchClear')?.addEventListener('click', clearBatch);
   
-  // Collection actions
+  // Collections
   document.getElementById('createCollectionBtn')?.addEventListener('click', createCollection);
 }
 
@@ -333,7 +209,7 @@ function toggleFavorite(icon) {
     state.favorites.splice(index, 1);
     showToast('💔 Favorilerden çıkarıldı');
   }
-  localStorage.setItem('iconFavorites', JSON.stringify(state.favorites));
+  localStorage.setItem('v6Favorites', JSON.stringify(state.favorites));
   renderIcons(state.icons);
 }
 
@@ -375,7 +251,7 @@ function updateCompareDisplay() {
   if (state.compare.slot1) {
     slot1.innerHTML = `
       <div class="icon-display">
-        <span class="iconify" data-icon="tabler:${state.compare.slot1.icon}" data-width="80" data-height="80"></span>
+        <img src="${state.compare.slot1.file}" alt="${state.compare.slot1.name}" style="width:80px;height:80px;">
       </div>
       <p>${state.compare.slot1.name}</p>
     `;
@@ -385,14 +261,12 @@ function updateCompareDisplay() {
   if (state.compare.slot2) {
     slot2.innerHTML = `
       <div class="icon-display">
-        <span class="iconify" data-icon="tabler:${state.compare.slot2.icon}" data-width="80" data-height="80"></span>
+        <img src="${state.compare.slot2.file}" alt="${state.compare.slot2.name}" style="width:80px;height:80px;">
       </div>
       <p>${state.compare.slot2.name}</p>
     `;
     slot2.classList.add('filled');
   }
-  
-  if (window.Iconify) window.Iconify.scan();
 }
 
 // ==========================================
@@ -417,9 +291,7 @@ function openBatchModal() {
 
 function updateBatchCount() {
   const countEl = document.getElementById('batchCount');
-  if (countEl) {
-    countEl.textContent = `${state.batch.length} ikon seçildi`;
-  }
+  if (countEl) countEl.textContent = `${state.batch.length} ikon seçildi`;
 }
 
 function clearBatch() {
@@ -440,7 +312,7 @@ async function batchExportSvg() {
   const svgs = [];
   for (const icon of state.batch) {
     try {
-      const response = await fetch(`https://api.iconify.design/tabler/${icon.icon}.svg`);
+      const response = await fetch(icon.file);
       const svg = await response.text();
       svgs.push({ name: icon.name, svg });
     } catch (e) {
@@ -448,15 +320,13 @@ async function batchExportSvg() {
     }
   }
   
-  // Create zip-like download (as single file for now)
   const content = svgs.map(s => `<!-- ${s.name} -->\n${s.svg}`).join('\n\n');
-  downloadFile(content, 'icons-bundle.svg', 'image/svg+xml');
+  downloadFile(content, 'v6-icons-bundle.svg', 'image/svg+xml');
   showToast(`✅ ${svgs.length} ikon indirildi`);
 }
 
 async function batchExportPng() {
   showToast('🖼️ PNG export hazırlanıyor...');
-  // PNG export would require canvas conversion
   showToast('ℹ️ PNG export yakında geliyor');
 }
 
@@ -501,7 +371,7 @@ function createCollection() {
   }
   
   state.collections.push({ name, icons: [] });
-  localStorage.setItem('iconCollections', JSON.stringify(state.collections));
+  localStorage.setItem('v6Collections', JSON.stringify(state.collections));
   input.value = '';
   renderCollections();
   showToast('📁 Koleksiyon oluşturuldu');
@@ -513,9 +383,8 @@ function addToCollection(icon) {
     return;
   }
   
-  // For simplicity, add to first collection
   state.collections[0].icons.push(icon);
-  localStorage.setItem('iconCollections', JSON.stringify(state.collections));
+  localStorage.setItem('v6Collections', JSON.stringify(state.collections));
   showToast(`📁 ${icon.name} koleksiyona eklendi`);
 }
 
@@ -524,48 +393,35 @@ function addToCollection(icon) {
 // ==========================================
 
 function openDetailModal(icon) {
+  state.currentIcon = icon;
   const modal = document.getElementById('detailModal');
   modal.classList.add('active');
   
   document.getElementById('detailTitle').textContent = icon.name;
   document.getElementById('detailCategory').textContent = icon.category;
-  document.getElementById('detailLibrary').textContent = icon.prefix;
-  document.getElementById('detailVersion').textContent = state.currentVersion;
+  document.getElementById('detailLibrary').textContent = 'v6 Drift';
+  document.getElementById('detailVersion').textContent = 'SVG';
   
   const wrapper = document.getElementById('detailIconWrapper');
-  wrapper.innerHTML = `
-    <span class="iconify" 
-          data-icon="tabler:${icon.icon}" 
-          data-width="100" 
-          data-height="100"
-          style="color: ${state.customization.color};"></span>
-  `;
-  
-  // Setup buttons
-  document.getElementById('copySvgBtn').onclick = () => copySvg(icon);
-  document.getElementById('copyCodeBtn').onclick = () => copyCode(icon);
-  document.getElementById('downloadPngBtn').onclick = () => downloadPng(icon);
-  document.getElementById('addToFavBtn').onclick = () => toggleFavorite(icon);
-  document.getElementById('addToCollectionBtn').onclick = () => addToCollection(icon);
-  document.getElementById('addToCompareBtn').onclick = () => addToCompare(icon);
+  wrapper.innerHTML = `<img src="${icon.file}" alt="${icon.name}" style="width:100px;height:100px;">`;
   
   // Preview section
   const previewGrid = document.getElementById('previewGrid');
   previewGrid.innerHTML = [24, 32, 48, 64].map(size => `
     <div class="preview-item">
       <div class="icon-box">
-        <span class="iconify" data-icon="tabler:${icon.icon}" data-width="${size}" data-height="${size}"></span>
+        <img src="${icon.file}" alt="${icon.name}" style="width:${size}px;height:${size}px;">
       </div>
       <span>${size}px</span>
     </div>
   `).join('');
-  
-  if (window.Iconify) window.Iconify.scan();
 }
 
-async function copySvg(icon) {
+async function copySvg() {
+  if (!state.currentIcon) return;
+  
   try {
-    const response = await fetch(`https://api.iconify.design/tabler/${icon.icon}.svg`);
+    const response = await fetch(state.currentIcon.file);
     const svg = await response.text();
     await navigator.clipboard.writeText(svg);
     showToast('✅ SVG kopyalandı');
@@ -574,31 +430,17 @@ async function copySvg(icon) {
   }
 }
 
-function copyCode(icon) {
-  const code = `<span class="iconify" data-icon="tabler:${icon.icon}"></span>`;
+function copyCode() {
+  if (!state.currentIcon) return;
+  
+  const code = `<img src="${state.currentIcon.file}" alt="${state.currentIcon.name}">`;
   navigator.clipboard.writeText(code);
   showToast('✅ Kod kopyalandı');
 }
 
-async function downloadPng(icon) {
+async function downloadPng() {
   showToast('🖼️ PNG hazırlanıyor...');
-  // Would need canvas implementation
   showToast('ℹ️ PNG indirme yakında geliyor');
-}
-
-// ==========================================
-// 🌍 GLOBAL SEARCH
-// ==========================================
-
-function enableGlobalMode() {
-  showToast('🌍 Global mod aktif');
-  document.getElementById('searchInput').placeholder = '🌐 Tüm kütüphanelerde ara...';
-}
-
-async function loadOtherVersion(version, prefix) {
-  showToast(`📚 ${CONFIG[version].name} yükleniyor...`);
-  // Implementation for other versions
-  showToast(`ℹ️ ${CONFIG[version].name} yakında`);
 }
 
 // ==========================================
@@ -610,9 +452,10 @@ function closeAllModals() {
 }
 
 function updateStats() {
-  document.getElementById('iconCount').textContent = state.icons.length;
+  const visibleIcons = document.querySelectorAll('.icon-card').length;
+  document.getElementById('iconCount').textContent = visibleIcons;
   document.getElementById('favCount').textContent = state.favorites.length;
-  document.getElementById('currentLibrary').textContent = CONFIG[state.currentVersion].name;
+  document.getElementById('currentLibrary').textContent = 'v6 Drift SVG';
 }
 
 function downloadFile(content, filename, type) {

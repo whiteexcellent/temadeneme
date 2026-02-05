@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="driftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35"/>
+      <stop offset="100%" style="stop-color:#FF2D7A"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#driftGrad)" opacity="0.15"/>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="none" stroke="url(#driftGrad)" stroke-width="2"/>
+  
+  <!-- Camera body -->
+  <rect x="12" y="20" width="40" height="28" rx="6" fill="none" stroke="url(#driftGrad)" stroke-width="2.5"/>
+  
+  <!-- Lens -->
+  <circle cx="32" cy="34" r="10" fill="none" stroke="url(#driftGrad)" stroke-width="2.5"/>
+  <circle cx="32" cy="34" r="6" fill="none" stroke="url(#driftGrad)" stroke-width="1.5" opacity="0.6"/>
+  
+  <!-- Flash -->
+  <rect x="38" y="14" width="8" height="4" rx="1" fill="url(#driftGrad)"/>
+  
+  <!-- Shutter button -->
+  <circle cx="44" cy="26" r="2" fill="url(#driftGrad)" opacity="0.8"/>
+</svg>

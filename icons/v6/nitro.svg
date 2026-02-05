@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="driftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35"/>
+      <stop offset="100%" style="stop-color:#FF2D7A"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#driftGrad)" opacity="0.15"/>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="none" stroke="url(#driftGrad)" stroke-width="2"/>
+  
+  <!-- Flame main shape -->
+  <path d="M32 8c-4 8-12 16-12 26a12 12 0 0024 0c0-10-8-18-12-26z" 
+        fill="none" stroke="url(#driftGrad)" stroke-width="2.5" stroke-linejoin="round"/>
+  
+  <!-- Inner flame -->
+  <path d="M32 20c-2 5-6 10-6 16a6 6 0 0012 0c0-6-4-11-6-16z" 
+        fill="url(#driftGrad)" opacity="0.5"/>
+  
+  <!-- Sparks -->
+  <path d="M20 12l-2-2M44 12l2-2M16 48l-2 2M48 48l2 2" stroke="url(#driftGrad)" stroke-width="1.5" opacity="0.7"/>
+</svg>

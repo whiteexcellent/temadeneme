@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="driftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35"/>
+      <stop offset="100%" style="stop-color:#FF2D7A"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#driftGrad)" opacity="0.15"/>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="none" stroke="url(#driftGrad)" stroke-width="2"/>
+  
+  <!-- Sun -->
+  <circle cx="32" cy="28" r="10" fill="none" stroke="url(#driftGrad)" stroke-width="2.5"/>
+  
+  <!-- Sun rays -->
+  <path d="M32 10v6M32 40v6M14 28h6M44 28h6M18 14l4 4M42 38l4 4M18 42l4-4M42 18l4-4" 
+        stroke="url(#driftGrad)" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Cloud -->
+  <path d="M16 46a6 6 0 016-6h2a8 8 0 0116 0h2a6 6 0 010 12H22a6 6 0 01-6-6z" 
+        fill="none" stroke="url(#driftGrad)" stroke-width="2" opacity="0.7"/>
+</svg>

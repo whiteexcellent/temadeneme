@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="driftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35"/>
+      <stop offset="100%" style="stop-color:#FF2D7A"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#driftGrad)" opacity="0.15"/>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="none" stroke="url(#driftGrad)" stroke-width="2"/>
+  
+  <!-- Clock face -->
+  <circle cx="32" cy="32" r="20" fill="none" stroke="url(#driftGrad)" stroke-width="2.5"/>
+  
+  <!-- Hour markers -->
+  <path d="M32 14v4M32 46v4M14 32h4M46 32h4" stroke="url(#driftGrad)" stroke-width="2"/>
+  
+  <!-- Hands -->
+  <path d="M32 32l-6-8" stroke="url(#driftGrad)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M32 32l10 4" stroke="url(#driftGrad)" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Center -->
+  <circle cx="32" cy="32" r="2" fill="url(#driftGrad)"/>
+  
+  <!-- Speed lines -->
+  <path d="M52 12l4-2M52 16l4 0" stroke="url(#driftGrad)" stroke-width="1.5" opacity="0.5" stroke-linecap="round"/>
+</svg>

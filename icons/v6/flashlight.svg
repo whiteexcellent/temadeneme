@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="driftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35"/>
+      <stop offset="100%" style="stop-color:#FF2D7A"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#driftGrad)" opacity="0.15"/>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="none" stroke="url(#driftGrad)" stroke-width="2"/>
+  
+  <!-- Flashlight body -->
+  <path d="M24 12l-4 8v24l4 8h16l4-8V20l-4-8H24z" fill="none" stroke="url(#driftGrad)" stroke-width="2.5"/>
+  
+  <!-- Head -->
+  <path d="M20 20h24M20 44h24" stroke="url(#driftGrad)" stroke-width="2"/>
+  
+  <!-- Button -->
+  <rect x="28" y="28" width="8" height="8" rx="2" fill="url(#driftGrad)" opacity="0.8"/>
+  
+  <!-- Light beams -->
+  <path d="M44 24l8-4M44 32l10 0M44 40l8 4" stroke="url(#driftGrad)" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
+</svg>

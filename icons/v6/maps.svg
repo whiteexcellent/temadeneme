@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="driftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35"/>
+      <stop offset="100%" style="stop-color:#FF2D7A"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#driftGrad)" opacity="0.15"/>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="none" stroke="url(#driftGrad)" stroke-width="2"/>
+  
+  <!-- Map fold lines -->
+  <path d="M20 12l-8 4v32l8-4 12 4 12-4 8 4V16l-8-4-12 4-12-4z" 
+        fill="none" stroke="url(#driftGrad)" stroke-width="2.5" stroke-linejoin="round"/>
+  
+  <!-- Location marker -->
+  <path d="M32 20a6 6 0 00-6 6c0 6 6 12 6 12s6-6 6-12a6 6 0 00-6-6z" 
+        fill="none" stroke="url(#driftGrad)" stroke-width="2"/>
+  <circle cx="32" cy="26" r="2" fill="url(#driftGrad)"/>
+  
+  <!-- Route line -->
+  <path d="M20 44l6-4 4 4 8-6" fill="none" stroke="url(#driftGrad)" stroke-width="1.5" opacity="0.6" stroke-linecap="round"/>
+</svg>

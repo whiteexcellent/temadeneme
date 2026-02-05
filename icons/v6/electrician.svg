@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="driftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35"/>
+      <stop offset="100%" style="stop-color:#FF2D7A"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#driftGrad)" opacity="0.15"/>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="none" stroke="url(#driftGrad)" stroke-width="2"/>
+  
+  <!-- Lightning bolt -->
+  <path d="M36 8L20 30h12l-4 26 20-28H32l8-20z" 
+        fill="none" stroke="url(#driftGrad)" stroke-width="2.5" stroke-linejoin="round"/>
+  
+  <!-- Sparks -->
+  <circle cx="16" cy="20" r="2" fill="url(#driftGrad)"/>
+  <circle cx="48" cy="40" r="2" fill="url(#driftGrad)"/>
+  <path d="M14 40l2-2M46 20l2-2" stroke="url(#driftGrad)" stroke-width="1.5"/>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="driftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35"/>
+      <stop offset="100%" style="stop-color:#FF2D7A"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#driftGrad)" opacity="0.15"/>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="none" stroke="url(#driftGrad)" stroke-width="2"/>
+  
+  <!-- Checkered flag -->
+  <path d="M12 16l40 8v28l-40-8V16z" fill="none" stroke="url(#driftGrad)" stroke-width="2.5"/>
+  
+  <!-- Flag pole -->
+  <path d="M12 12v44" stroke="url(#driftGrad)" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Checker pattern hints -->
+  <path d="M20 20v8M32 22v8M44 24v8M20 32v8M32 34v8M44 36v8" 
+        stroke="url(#driftGrad)" stroke-width="1.5" opacity="0.5"/>
+  
+  <!-- Motion lines -->
+  <path d="M56 20l4-2M56 28l4 0M56 36l4 2" stroke="url(#driftGrad)" stroke-width="1.5" opacity="0.6"/>
+</svg>
