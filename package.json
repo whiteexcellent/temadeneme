@@ -4,7 +4,7 @@
   "description": "Kawaii FiveM Phone Theme Icons - 36 SVG icons with viewer",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview"
   },
